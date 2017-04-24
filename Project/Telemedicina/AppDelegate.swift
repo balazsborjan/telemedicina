@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  Telemedicina
+//  SiriDemo
 //
-//  Created by Balázs Bojrán on 2017. 04. 24..
-//  Copyright © 2017. SZTE. All rights reserved.
+//  Created by Balázs Bojrán on 2017. 04. 12..
+//  Copyright © 2017. Balázs Bojrán. All rights reserved.
 //
 
 import UIKit

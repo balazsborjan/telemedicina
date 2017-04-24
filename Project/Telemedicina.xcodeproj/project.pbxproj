@@ -8,22 +8,56 @@
 
 /* Begin PBXBuildFile section */
 		05B9EA731EAE5F54001706E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9EA721EAE5F54001706E5 /* AppDelegate.swift */; };
-		05B9EA751EAE5F54001706E5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9EA741EAE5F54001706E5 /* ViewController.swift */; };
 		05B9EA781EAE5F54001706E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05B9EA761EAE5F54001706E5 /* Main.storyboard */; };
 		05B9EA7B1EAE5F54001706E5 /* Telemedicina.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 05B9EA791EAE5F54001706E5 /* Telemedicina.xcdatamodeld */; };
 		05B9EA7D1EAE5F54001706E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05B9EA7C1EAE5F54001706E5 /* Assets.xcassets */; };
 		05B9EA801EAE5F54001706E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05B9EA7E1EAE5F54001706E5 /* LaunchScreen.storyboard */; };
+		05B9EA991EAE659B001706E5 /* AddNewPatientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9EA871EAE659B001706E5 /* AddNewPatientViewController.swift */; };
+		05B9EA9A1EAE659B001706E5 /* ChartLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9EA881EAE659B001706E5 /* ChartLineView.swift */; };
+		05B9EA9B1EAE659B001706E5 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9EA891EAE659B001706E5 /* HomePageViewController.swift */; };
+		05B9EA9C1EAE659B001706E5 /* OperationTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9EA8A1EAE659B001706E5 /* OperationTabBarController.swift */; };
+		05B9EA9D1EAE659B001706E5 /* OperationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9EA8B1EAE659B001706E5 /* OperationTableViewCell.swift */; };
+		05B9EA9E1EAE659B001706E5 /* OperationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9EA8C1EAE659B001706E5 /* OperationTableViewController.swift */; };
+		05B9EA9F1EAE659B001706E5 /* OperationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9EA8D1EAE659B001706E5 /* OperationViewController.swift */; };
+		05B9EAA01EAE659B001706E5 /* PatientPOJO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9EA8E1EAE659B001706E5 /* PatientPOJO.swift */; };
+		05B9EAA11EAE659B001706E5 /* PatientValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9EA8F1EAE659B001706E5 /* PatientValidator.swift */; };
+		05B9EAA21EAE659B001706E5 /* ResultCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9EA901EAE659B001706E5 /* ResultCalculator.swift */; };
+		05B9EAA31EAE659B001706E5 /* ResultChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9EA911EAE659B001706E5 /* ResultChartView.swift */; };
+		05B9EAA41EAE659B001706E5 /* ResultChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9EA921EAE659B001706E5 /* ResultChartViewController.swift */; };
+		05B9EAA51EAE659B001706E5 /* ResultsTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9EA931EAE659B001706E5 /* ResultsTabBarController.swift */; };
+		05B9EAA61EAE659B001706E5 /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9EA941EAE659B001706E5 /* ResultsTableViewController.swift */; };
+		05B9EAA71EAE659B001706E5 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9EA951EAE659B001706E5 /* ResultTableViewCell.swift */; };
+		05B9EAA81EAE659B001706E5 /* ScoreTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9EA961EAE659B001706E5 /* ScoreTable.swift */; };
+		05B9EAA91EAE659B001706E5 /* SelectPatientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9EA971EAE659B001706E5 /* SelectPatientTableViewCell.swift */; };
+		05B9EAAA1EAE659B001706E5 /* SelectPatientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9EA981EAE659B001706E5 /* SelectPatientTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		05B9EA6F1EAE5F54001706E5 /* Telemedicina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Telemedicina.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05B9EA721EAE5F54001706E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		05B9EA741EAE5F54001706E5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		05B9EA771EAE5F54001706E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		05B9EA7A1EAE5F54001706E5 /* Telemedicina.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Telemedicina.xcdatamodel; sourceTree = "<group>"; };
 		05B9EA7C1EAE5F54001706E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		05B9EA7F1EAE5F54001706E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		05B9EA811EAE5F54001706E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		05B9EA871EAE659B001706E5 /* AddNewPatientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewPatientViewController.swift; sourceTree = "<group>"; };
+		05B9EA881EAE659B001706E5 /* ChartLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartLineView.swift; sourceTree = "<group>"; };
+		05B9EA891EAE659B001706E5 /* HomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
+		05B9EA8A1EAE659B001706E5 /* OperationTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationTabBarController.swift; sourceTree = "<group>"; };
+		05B9EA8B1EAE659B001706E5 /* OperationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationTableViewCell.swift; sourceTree = "<group>"; };
+		05B9EA8C1EAE659B001706E5 /* OperationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationTableViewController.swift; sourceTree = "<group>"; };
+		05B9EA8D1EAE659B001706E5 /* OperationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationViewController.swift; sourceTree = "<group>"; };
+		05B9EA8E1EAE659B001706E5 /* PatientPOJO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientPOJO.swift; sourceTree = "<group>"; };
+		05B9EA8F1EAE659B001706E5 /* PatientValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientValidator.swift; sourceTree = "<group>"; };
+		05B9EA901EAE659B001706E5 /* ResultCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultCalculator.swift; sourceTree = "<group>"; };
+		05B9EA911EAE659B001706E5 /* ResultChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultChartView.swift; sourceTree = "<group>"; };
+		05B9EA921EAE659B001706E5 /* ResultChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultChartViewController.swift; sourceTree = "<group>"; };
+		05B9EA931EAE659B001706E5 /* ResultsTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsTabBarController.swift; sourceTree = "<group>"; };
+		05B9EA941EAE659B001706E5 /* ResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
+		05B9EA951EAE659B001706E5 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
+		05B9EA961EAE659B001706E5 /* ScoreTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreTable.swift; sourceTree = "<group>"; };
+		05B9EA971EAE659B001706E5 /* SelectPatientTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPatientTableViewCell.swift; sourceTree = "<group>"; };
+		05B9EA981EAE659B001706E5 /* SelectPatientTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPatientTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +90,80 @@
 		05B9EA711EAE5F54001706E5 /* Telemedicina */ = {
 			isa = PBXGroup;
 			children = (
-				05B9EA721EAE5F54001706E5 /* AppDelegate.swift */,
-				05B9EA741EAE5F54001706E5 /* ViewController.swift */,
+				05B9EA961EAE659B001706E5 /* ScoreTable.swift */,
+				05B9EA901EAE659B001706E5 /* ResultCalculator.swift */,
 				05B9EA761EAE5F54001706E5 /* Main.storyboard */,
+				05B9EAB71EAE69B9001706E5 /* Controllers */,
+				05B9EAB81EAE69CD001706E5 /* Views */,
+				05B9EABB1EAE69E7001706E5 /* TableViewCells */,
+				05B9EAB91EAE69D4001706E5 /* POJO */,
+				05B9EABA1EAE69DA001706E5 /* Validators */,
+				05B9EABC1EAE69F8001706E5 /* Supporting Files */,
+			);
+			path = Telemedicina;
+			sourceTree = "<group>";
+		};
+		05B9EAB71EAE69B9001706E5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				05B9EA871EAE659B001706E5 /* AddNewPatientViewController.swift */,
+				05B9EA891EAE659B001706E5 /* HomePageViewController.swift */,
+				05B9EA8A1EAE659B001706E5 /* OperationTabBarController.swift */,
+				05B9EA8C1EAE659B001706E5 /* OperationTableViewController.swift */,
+				05B9EA8D1EAE659B001706E5 /* OperationViewController.swift */,
+				05B9EA921EAE659B001706E5 /* ResultChartViewController.swift */,
+				05B9EA931EAE659B001706E5 /* ResultsTabBarController.swift */,
+				05B9EA941EAE659B001706E5 /* ResultsTableViewController.swift */,
+				05B9EA981EAE659B001706E5 /* SelectPatientTableViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		05B9EAB81EAE69CD001706E5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				05B9EA881EAE659B001706E5 /* ChartLineView.swift */,
+				05B9EA911EAE659B001706E5 /* ResultChartView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		05B9EAB91EAE69D4001706E5 /* POJO */ = {
+			isa = PBXGroup;
+			children = (
+				05B9EA8E1EAE659B001706E5 /* PatientPOJO.swift */,
+			);
+			name = POJO;
+			sourceTree = "<group>";
+		};
+		05B9EABA1EAE69DA001706E5 /* Validators */ = {
+			isa = PBXGroup;
+			children = (
+				05B9EA8F1EAE659B001706E5 /* PatientValidator.swift */,
+			);
+			name = Validators;
+			sourceTree = "<group>";
+		};
+		05B9EABB1EAE69E7001706E5 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				05B9EA8B1EAE659B001706E5 /* OperationTableViewCell.swift */,
+				05B9EA951EAE659B001706E5 /* ResultTableViewCell.swift */,
+				05B9EA971EAE659B001706E5 /* SelectPatientTableViewCell.swift */,
+			);
+			name = TableViewCells;
+			sourceTree = "<group>";
+		};
+		05B9EABC1EAE69F8001706E5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				05B9EA721EAE5F54001706E5 /* AppDelegate.swift */,
 				05B9EA7C1EAE5F54001706E5 /* Assets.xcassets */,
 				05B9EA7E1EAE5F54001706E5 /* LaunchScreen.storyboard */,
 				05B9EA811EAE5F54001706E5 /* Info.plist */,
 				05B9EA791EAE5F54001706E5 /* Telemedicina.xcdatamodeld */,
 			);
-			path = Telemedicina;
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,8 +239,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05B9EA751EAE5F54001706E5 /* ViewController.swift in Sources */,
+				05B9EAA81EAE659B001706E5 /* ScoreTable.swift in Sources */,
+				05B9EAA61EAE659B001706E5 /* ResultsTableViewController.swift in Sources */,
+				05B9EA9C1EAE659B001706E5 /* OperationTabBarController.swift in Sources */,
+				05B9EA9A1EAE659B001706E5 /* ChartLineView.swift in Sources */,
+				05B9EA9D1EAE659B001706E5 /* OperationTableViewCell.swift in Sources */,
+				05B9EAA11EAE659B001706E5 /* PatientValidator.swift in Sources */,
+				05B9EA9E1EAE659B001706E5 /* OperationTableViewController.swift in Sources */,
+				05B9EAA31EAE659B001706E5 /* ResultChartView.swift in Sources */,
+				05B9EAA01EAE659B001706E5 /* PatientPOJO.swift in Sources */,
+				05B9EAAA1EAE659B001706E5 /* SelectPatientTableViewController.swift in Sources */,
+				05B9EAA91EAE659B001706E5 /* SelectPatientTableViewCell.swift in Sources */,
+				05B9EA9B1EAE659B001706E5 /* HomePageViewController.swift in Sources */,
+				05B9EAA21EAE659B001706E5 /* ResultCalculator.swift in Sources */,
+				05B9EAA51EAE659B001706E5 /* ResultsTabBarController.swift in Sources */,
+				05B9EA9F1EAE659B001706E5 /* OperationViewController.swift in Sources */,
+				05B9EA991EAE659B001706E5 /* AddNewPatientViewController.swift in Sources */,
 				05B9EA731EAE5F54001706E5 /* AppDelegate.swift in Sources */,
+				05B9EAA41EAE659B001706E5 /* ResultChartViewController.swift in Sources */,
+				05B9EAA71EAE659B001706E5 /* ResultTableViewCell.swift in Sources */,
 				05B9EA7B1EAE5F54001706E5 /* Telemedicina.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,6 +424,7 @@
 				05B9EA861EAE5F54001706E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
