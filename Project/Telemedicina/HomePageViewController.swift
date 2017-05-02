@@ -21,8 +21,18 @@ var listOfWords = [
     "Gyümölcs": ["Alma", "Narancs", "Mandarin", "Körte", "Cseresznye", "Meggy", "Málna", "Ribizli", "Banán", "Sárgabarack", "Őszibarack", "Szilva"]
 ]
 
+extension UIButton {
+    func centerTextAndImage(spacing: CGFloat) {
+        let insetAmount = spacing / 2
+        imageEdgeInsets = UIEdgeInsets(top: 0, left: -insetAmount, bottom: 0, right: insetAmount)
+        titleEdgeInsets = UIEdgeInsets(top: 0, left: insetAmount, bottom: 0, right: -insetAmount)
+        contentEdgeInsets = UIEdgeInsets(top: 0, left: insetAmount, bottom: 0, right: insetAmount)
+    }
+}
+
 class HomePageViewController: UIViewController {
 
+    
     @IBOutlet weak var selectPatientButton: UIButton!
     
     @IBOutlet weak var addNewPatientButton: UIButton!
@@ -34,6 +44,10 @@ class HomePageViewController: UIViewController {
         
         // MARK: Azért kell, mert amikor új beteget veszünk fel és ekkor a vizsgálat viewcontrollerre navigálunk, akkor onnan ne lehessen megint az új betegre visszamenni, mert már úgy is lekerült adatbázisba, hanem egyből a kezdőoldalra, viszont ekkor le kell tiltani, hogy a kezdőoldalról ne legyen "vissza" gomb
         self.navigationItem.hidesBackButton = true
+        
+        self.navigationController?.navigationBar.backgroundColor = UIColor.white
+        
+        //selectPatientButton.title
         
         populateWords()
     }

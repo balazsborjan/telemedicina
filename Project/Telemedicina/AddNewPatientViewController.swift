@@ -13,6 +13,8 @@ class AddNewPatientViewController: UIViewController {
     
     var patientPOJO = PatientPOJO()
     
+    let validator = PatientValidator()
+    
     @IBOutlet weak var nameTextField: UITextField!
     
     @IBOutlet weak var sexTypeSelector: UISegmentedControl!
@@ -77,21 +79,18 @@ class AddNewPatientViewController: UIViewController {
     
     func isSavePatientEnabled() -> Bool {
         
-//        if PatientValidator.isValid(name: nameTextField.text) && PatientValidator.isValid(TAJ: tajTextField.text) {
-//            return true
-//        }
-        
-        if sexTypeSelector.selectedSegmentIndex > -1
-            && patientPOJO.name != nil
-            && patientPOJO.name.characters.count > 0
-            && patientPOJO.TAJ != nil
-            && patientPOJO.TAJ.characters.count >= 9 {
+        if PatientValidator.isValid(name: nameTextField.text) &&
+            PatientValidator.isValid(TAJ: tajTextField.text) &&
+            sexTypeSelector.selectedSegmentIndex > -1 {
+            
+            patientPOJO.name = nameTextField.text
+            patientPOJO.TAJ = tajTextField.text
             
             if patientPOJO.birthDate == nil {
                 
                 patientPOJO.birthDate = datePicker.date
             }
-            
+                
             return true
         }
         
@@ -101,11 +100,13 @@ class AddNewPatientViewController: UIViewController {
     @IBAction func birthDateChanged(_ sender: UIDatePicker) {
         
         patientPOJO.birthDate = sender.date
+        
+        if isSavePatientEnabled() {
+            saveButton.isEnabled = true
+        }
     }
 
     @IBAction func selectedSexTypeChanged(_ sender: UISegmentedControl) {
-        
-        self.view.endEditing(true)
         
         switch sender.selectedSegmentIndex {
         case 0:
@@ -119,23 +120,22 @@ class AddNewPatientViewController: UIViewController {
         if isSavePatientEnabled() {
             saveButton.isEnabled = true
         }
+        
+        self.view.endEditing(true)
     }
     
     @IBAction func savePatient(_ sender: UIButton) {
         
         self.view.endEditing(true)
+        
         showSaveAlert()
     }
     
     private func showSaveAlert() {
         
-        let dateFormatter = DateFormatter()
-        
-        dateFormatter.dateFormat = "YYYY-MM-dd"
-        
         let name = "Név: \(patientPOJO.name!)\n"
         let sex = "Nem: \(patientPOJO.sexType == SexType.No ? "Nő" : "Férfi") \n"
-        let birthDate = "Születési dátum: \(dateFormatter.string(from: patientPOJO.birthDate!)) \n"
+        let birthDate = "Születési dátum: \(patientPOJO.birthDate!.toString()) \n"
         let taj = "TAJ szám: \(patientPOJO.TAJ!)"
         
         let savePatientAlert = UIAlertController(
@@ -143,7 +143,7 @@ class AddNewPatientViewController: UIViewController {
             message: "Adatak: \n" + name + sex + birthDate + taj, preferredStyle: .alert)
         
         savePatientAlert.addAction(UIAlertAction(title: "Mégsem", style: .cancel, handler: { (action: UIAlertAction) in
-            //Do nothing
+            //Do nothing - close the popup
         }))
         
         savePatientAlert.addAction(UIAlertAction(title: "Rögzít", style: .default, handler: { (action: UIAlertAction) in
@@ -224,6 +224,11 @@ extension AddNewPatientViewController {
         if self.view.frame.origin.y != 0 {
             
             self.view.frame.origin.y = 0
+        }
+        
+        if self.isSavePatientEnabled() {
+            
+            self.saveButton.isEnabled = true
         }
     }
 }

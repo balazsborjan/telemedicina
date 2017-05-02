@@ -22,6 +22,15 @@ extension Date {
         
         return age
     }
+    
+    func toString() -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy. MM. dd"
+        dateFormatter.timeZone = NSTimeZone(name: "GMT") as TimeZone!
+        
+        return dateFormatter.string(from: self)
+    }
 }
 
 extension NSDate {

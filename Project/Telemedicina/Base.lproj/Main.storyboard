@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ICK-9R-qaI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ICK-9R-qaI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,27 +22,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="F2H-fz-DKZ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="lH3-zJ-bQE">
+                                <rect key="frame" x="16" y="64" width="343" height="603"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ss-jV-FFc">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="328.5"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oIt-GR-rDc">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="301.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <state key="normal" title="Beteg kiválasztása">
-                                            <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
+                                        <state key="normal" title="Beteg kiválasztása"/>
                                         <connections>
-                                            <segue destination="TLd-3u-M1z" kind="show" identifier="selectPatientSegue" id="ZDE-JA-UsN"/>
+                                            <segue destination="TLd-3u-M1z" kind="show" identifier="selectPatientSegue" id="ECq-np-eLb"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ydF-Lv-EzM">
-                                        <rect key="frame" x="0.0" y="338.5" width="375" height="328.5"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIC-4D-uy8">
+                                        <rect key="frame" x="0.0" y="301.5" width="343" height="301.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <state key="normal" title="Új beteg felvétele">
-                                            <color key="titleShadowColor" name="alternateSelectedControlColor" catalog="System" colorSpace="catalog"/>
-                                        </state>
+                                        <state key="normal" title="Beteg felvétele"/>
                                         <connections>
-                                            <segue destination="l4E-iZ-ODu" kind="show" identifier="addNewPatientSegue" id="21z-S9-nIn"/>
+                                            <segue destination="l4E-iZ-ODu" kind="show" identifier="addNewPatientSegue" id="0NV-v1-h3L"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -50,21 +46,21 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="F2H-fz-DKZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="2oW-7D-cBL"/>
-                            <constraint firstItem="F2H-fz-DKZ" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="D7A-gn-a1i"/>
-                            <constraint firstItem="F2H-fz-DKZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Oks-Ok-Zbv"/>
-                            <constraint firstItem="F2H-fz-DKZ" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="sSk-Af-gGf"/>
+                            <constraint firstItem="lH3-zJ-bQE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="72l-xM-tlC"/>
+                            <constraint firstItem="lH3-zJ-bQE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Xhq-RB-w1F"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lH3-zJ-bQE" secondAttribute="trailing" id="dqo-og-Ytu"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lH3-zJ-bQE" secondAttribute="bottom" id="x5E-4o-chF"/>
+                            <constraint firstItem="lH3-zJ-bQE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yIZ-ya-8jS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Telemedicina" id="V0e-cN-Y8o"/>
                     <connections>
-                        <outlet property="addNewPatientButton" destination="ydF-Lv-EzM" id="SWY-Xk-f0s"/>
-                        <outlet property="selectPatientButton" destination="5ss-jV-FFc" id="gGW-HO-TSP"/>
+                        <outlet property="selectPatientButton" destination="oIt-GR-rDc" id="yOf-Js-qED"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="840.79999999999995" y="108.39580209895054"/>
+            <point key="canvasLocation" x="903" y="108"/>
         </scene>
         <!--Select Patient Table View Controller-->
         <scene sceneID="kxx-HC-PWy">
@@ -241,7 +237,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Wc-dF-vEl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1977" y="520"/>
+            <point key="canvasLocation" x="1977" y="543"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sQB-wm-jVr">
@@ -399,11 +395,11 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Előzmények" id="7aa-Il-k80"/>
+                    <tabBarItem key="tabBarItem" title="Előzmények" image="resulthistory" id="7aa-Il-k80"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4MZ-O3-nfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5176.8000000000002" y="596.85157421289364"/>
+            <point key="canvasLocation" x="5177" y="597"/>
         </scene>
         <!--Eredmények-->
         <scene sceneID="1Jz-Lw-JW8">
@@ -418,7 +414,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Grafikon" id="uur-az-LY7"/>
+                    <tabBarItem key="tabBarItem" title="Grafikon" image="chart" id="uur-az-LY7"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b8Y-b6-Z3t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -635,9 +631,13 @@
             <point key="canvasLocation" x="9081" y="-165"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="chart" width="16" height="16"/>
+        <image name="resulthistory" width="29" height="29"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="z0s-83-qDn"/>
-        <segue reference="Bon-dX-qVy"/>
+        <segue reference="UKU-RJ-wq0"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.98431372549019602" green="0.058823529411764705" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
 </document>
