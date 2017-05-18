@@ -44,20 +44,6 @@ class OperationTableViewController: UITableViewController {
     
     var adjustForTabbarInsets: UIEdgeInsets!
     
-    var isManualTableHeight: Bool?
-    
-    //Depricated
-    var viewControllerShouldPop: Bool = false {
-        
-        didSet {
-            
-            if viewControllerShouldPop {
-                
-                self.navigationController?.popViewController(animated: true)
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -94,8 +80,16 @@ class OperationTableViewController: UITableViewController {
         super.viewDidLayoutSubviews()
         
         setInsets()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
         
-        //setTableViewRowHeight()
+        coordinator.animate(alongsideTransition: nil) { (_) in
+            
+            self.setTableViewRowHeight()
+            self.tableView.reloadData()
+        }
     }
     
     private func setInsets() {
@@ -194,6 +188,7 @@ class OperationTableViewController: UITableViewController {
             tableView.isScrollEnabled = false
             tableView.rowHeight = rowHeight
             tableView.estimatedRowHeight = rowHeight
+            tableView.scrollsToTop = true
             
         } else {
             
