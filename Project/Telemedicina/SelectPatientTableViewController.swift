@@ -31,24 +31,10 @@ class SelectPatientTableViewController: UITableViewController {
         fetchPatients()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         
-        if let identifier = segue.identifier {
-            
-            if identifier == "selectPatientSegue" {
-                
-                if let destinationVC = segue.destination as? OperationViewController {
-                    
-                    destinationVC.navigateBackToMainController = false
-                }
-            }
-        }
+        searchController.isActive = false
     }
 
     func fetchPatients() {

@@ -11,27 +11,7 @@ import Foundation
 class PatientValidator {
     
     static let nameRegex = "^[A-ZÁÉÓÚÜŰÖŐÍ][a-záéóúüűöőí]+ [A-ZÁÉÓÚÜŰÖŐÍ][a-záéóúüűöőí]+[ [A-ZÁÉÓÚÜŰÖŐÍ][a-záéóúüűöőí]+]*"
-    static let tajRegex = "^[1-9][0-9]{8}"
-    
-//    func validate(patient: PatientPOJO) -> Int {
-//        
-//        if patient.name != nil && patient.birthDate != nil && patient.sexType != nil && patient.TAJ != nil {
-//            
-//            if !isValid(name: patient.name!) {
-//                
-//                return 1
-//            }
-//            
-//            if !isValid(TAJ: patient.TAJ) {
-//                
-//                return 2
-//            }
-//            
-//            return 0
-//        }
-//        
-//        return -1
-//    }
+    static let tajRegex = "[0-9]{9}"
     
     class func isValid(name: String!) -> Bool {
         
@@ -91,4 +71,16 @@ class PatientValidator {
         
         return false
     }
+    
+    class func isValid(schoolYears: Int?) -> Bool {
+        
+        return schoolYears != nil && schoolYears! > 0
+    }
 }
+
+
+
+
+
+
+

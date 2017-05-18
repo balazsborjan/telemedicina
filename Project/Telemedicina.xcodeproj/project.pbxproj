@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		056596B41EB0D9F7002F6A98 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056596B31EB0D9F7002F6A98 /* TestViewController.swift */; };
-		056596B61EB0DA64002F6A98 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056596B51EB0DA64002F6A98 /* TestView.swift */; };
-		05990D3F1EB8A58E00D92588 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05990D3E1EB8A58E00D92588 /* CloudKit.framework */; };
+		05291D521ECC681600ECE774 /* GradientLayerGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05291D511ECC681600ECE774 /* GradientLayerGenerator.swift */; };
+		05291D561ECC9EC000ECE774 /* PatientInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05291D551ECC9EC000ECE774 /* PatientInfoTableViewCell.swift */; };
+		05898C941ECDB279005C1C29 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05898C931ECDB279005C1C29 /* GradientButton.swift */; };
+		05898C961ECDC663005C1C29 /* OperationNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05898C951ECDC663005C1C29 /* OperationNavigationViewController.swift */; };
 		05B9EA731EAE5F54001706E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B9EA721EAE5F54001706E5 /* AppDelegate.swift */; };
 		05B9EA781EAE5F54001706E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05B9EA761EAE5F54001706E5 /* Main.storyboard */; };
 		05B9EA7B1EAE5F54001706E5 /* Telemedicina.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 05B9EA791EAE5F54001706E5 /* Telemedicina.xcdatamodeld */; };
@@ -36,10 +37,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		056596B31EB0D9F7002F6A98 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
-		056596B51EB0DA64002F6A98 /* TestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		05291D511ECC681600ECE774 /* GradientLayerGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientLayerGenerator.swift; sourceTree = "<group>"; };
+		05291D551ECC9EC000ECE774 /* PatientInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientInfoTableViewCell.swift; sourceTree = "<group>"; };
 		056596B71EB21024002F6A98 /* Telemedicina.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Telemedicina.entitlements; sourceTree = "<group>"; };
-		05990D3E1EB8A58E00D92588 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		05898C931ECDB279005C1C29 /* GradientButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
+		05898C951ECDC663005C1C29 /* OperationNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationNavigationViewController.swift; sourceTree = "<group>"; };
 		05B9EA6F1EAE5F54001706E5 /* Telemedicina.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Telemedicina.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05B9EA721EAE5F54001706E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05B9EA771EAE5F54001706E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -72,7 +74,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05990D3F1EB8A58E00D92588 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +83,6 @@
 		056596B81EB21038002F6A98 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				05990D3E1EB8A58E00D92588 /* CloudKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -110,6 +110,7 @@
 				056596B71EB21024002F6A98 /* Telemedicina.entitlements */,
 				05B9EA961EAE659B001706E5 /* ScoreTable.swift */,
 				05B9EA901EAE659B001706E5 /* ResultCalculator.swift */,
+				05291D511ECC681600ECE774 /* GradientLayerGenerator.swift */,
 				05B9EA761EAE5F54001706E5 /* Main.storyboard */,
 				05B9EAB71EAE69B9001706E5 /* Controllers */,
 				05B9EAB81EAE69CD001706E5 /* Views */,
@@ -130,11 +131,10 @@
 				05B9EA981EAE659B001706E5 /* SelectPatientTableViewController.swift */,
 				05B9EA8C1EAE659B001706E5 /* OperationTableViewController.swift */,
 				05B9EA8A1EAE659B001706E5 /* OperationTabBarController.swift */,
+				05898C951ECDC663005C1C29 /* OperationNavigationViewController.swift */,
 				05B9EA941EAE659B001706E5 /* ResultsTableViewController.swift */,
 				05B9EA931EAE659B001706E5 /* ResultsTabBarController.swift */,
 				05B9EA921EAE659B001706E5 /* ResultChartViewController.swift */,
-				056596B31EB0D9F7002F6A98 /* TestViewController.swift */,
-				056596B51EB0DA64002F6A98 /* TestView.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -144,6 +144,7 @@
 			children = (
 				05B9EA911EAE659B001706E5 /* ResultChartView.swift */,
 				05B9EA881EAE659B001706E5 /* ChartLineView.swift */,
+				05898C931ECDB279005C1C29 /* GradientButton.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -170,6 +171,7 @@
 				05B9EA971EAE659B001706E5 /* SelectPatientTableViewCell.swift */,
 				05B9EA8B1EAE659B001706E5 /* OperationTableViewCell.swift */,
 				05B9EA951EAE659B001706E5 /* ResultTableViewCell.swift */,
+				05291D551ECC9EC000ECE774 /* PatientInfoTableViewCell.swift */,
 			);
 			name = TableViewCells;
 			sourceTree = "<group>";
@@ -222,10 +224,13 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
-								enabled = 1;
+								enabled = 0;
+							};
+							com.apple.Siri = {
+								enabled = 0;
 							};
 							com.apple.iCloud = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -269,14 +274,15 @@
 			files = (
 				05B9EAA81EAE659B001706E5 /* ScoreTable.swift in Sources */,
 				05B9EAA61EAE659B001706E5 /* ResultsTableViewController.swift in Sources */,
-				056596B61EB0DA64002F6A98 /* TestView.swift in Sources */,
 				05B9EA9C1EAE659B001706E5 /* OperationTabBarController.swift in Sources */,
 				05B9EA9A1EAE659B001706E5 /* ChartLineView.swift in Sources */,
+				05291D561ECC9EC000ECE774 /* PatientInfoTableViewCell.swift in Sources */,
 				05B9EA9D1EAE659B001706E5 /* OperationTableViewCell.swift in Sources */,
+				05898C941ECDB279005C1C29 /* GradientButton.swift in Sources */,
 				05B9EAA11EAE659B001706E5 /* PatientValidator.swift in Sources */,
 				05B9EA9E1EAE659B001706E5 /* OperationTableViewController.swift in Sources */,
-				056596B41EB0D9F7002F6A98 /* TestViewController.swift in Sources */,
 				05B9EAA31EAE659B001706E5 /* ResultChartView.swift in Sources */,
+				05898C961ECDC663005C1C29 /* OperationNavigationViewController.swift in Sources */,
 				05B9EAA01EAE659B001706E5 /* PatientPOJO.swift in Sources */,
 				05B9EAAA1EAE659B001706E5 /* SelectPatientTableViewController.swift in Sources */,
 				05B9EAA91EAE659B001706E5 /* SelectPatientTableViewCell.swift in Sources */,
@@ -289,6 +295,7 @@
 				05B9EAA41EAE659B001706E5 /* ResultChartViewController.swift in Sources */,
 				05B9EAA71EAE659B001706E5 /* ResultTableViewCell.swift in Sources */,
 				05B9EA7B1EAE5F54001706E5 /* Telemedicina.xcdatamodeld in Sources */,
+				05291D521ECC681600ECE774 /* GradientLayerGenerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +343,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Balazs Bojran (U64C4JD2T9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -387,6 +395,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Balazs Bojran (U64C4JD2T9)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -413,7 +422,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Telemedicina/Telemedicina.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 672N4LBH7M;
 				INFOPLIST_FILE = Telemedicina/Info.plist;
@@ -430,13 +438,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Telemedicina/Telemedicina.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 672N4LBH7M;
 				INFOPLIST_FILE = Telemedicina/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hu.sed.healthteam.swiftcourse.Telemedicina;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};

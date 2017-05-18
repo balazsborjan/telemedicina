@@ -141,7 +141,7 @@ class ResultsTableViewController: UITableViewController {
         
         let resultInfoAlert = UIAlertController(
             title: result.date?.toString(),
-            message: "Normatív standard: \n" + result.normative! + "\n" + "Egyéni standard: \n" + result.personal!, preferredStyle: .alert)
+            message: "Normatív standard: \n" + result.normative! + "\n\n" + "Egyéni standard: \n" + result.personal!, preferredStyle: .alert)
         
         let closeAction = UIAlertAction(title: "Rendben", style: .default, handler: nil)
         

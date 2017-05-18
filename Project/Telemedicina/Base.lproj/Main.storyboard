@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ICK-9R-qaI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ICK-9R-qaI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Telemedicina-->
+        <!--Kezdőoldal-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="mainVC" id="BYZ-38-t0r" customClass="HomePageViewController" customModule="Telemedicina" customModuleProvider="target" sceneMemberID="viewController">
@@ -23,38 +23,48 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="lH3-zJ-bQE">
-                                <rect key="frame" x="16" y="64" width="343" height="603"/>
+                                <rect key="frame" x="16" y="114" width="343" height="503"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oIt-GR-rDc">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="301.5"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6v-qY-1JS">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="100.5"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oIt-GR-rDc" customClass="GradientButton" customModule="Telemedicina" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="100.5" width="343" height="100.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <state key="normal" title="Beteg kiválasztása"/>
                                         <connections>
                                             <segue destination="TLd-3u-M1z" kind="show" identifier="selectPatientSegue" id="ECq-np-eLb"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIC-4D-uy8">
-                                        <rect key="frame" x="0.0" y="301.5" width="343" height="301.5"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbn-fa-bWj">
+                                        <rect key="frame" x="0.0" y="201" width="343" height="101"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIC-4D-uy8" customClass="GradientButton" customModule="Telemedicina" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="302" width="343" height="100.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <state key="normal" title="Beteg felvétele"/>
                                         <connections>
                                             <segue destination="l4E-iZ-ODu" kind="show" identifier="addNewPatientSegue" id="0NV-v1-h3L"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jjD-Ea-yKR">
+                                        <rect key="frame" x="0.0" y="402.5" width="343" height="100.5"/>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="lH3-zJ-bQE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="72l-xM-tlC"/>
+                            <constraint firstItem="lH3-zJ-bQE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="72l-xM-tlC"/>
                             <constraint firstItem="lH3-zJ-bQE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Xhq-RB-w1F"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lH3-zJ-bQE" secondAttribute="trailing" id="dqo-og-Ytu"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lH3-zJ-bQE" secondAttribute="bottom" id="x5E-4o-chF"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lH3-zJ-bQE" secondAttribute="bottom" constant="50" id="x5E-4o-chF"/>
                             <constraint firstItem="lH3-zJ-bQE" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yIZ-ya-8jS"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Telemedicina" id="V0e-cN-Y8o"/>
+                    <navigationItem key="navigationItem" title="Kezdőoldal" id="V0e-cN-Y8o"/>
                     <connections>
+                        <outlet property="addNewPatientButton" destination="VIC-4D-uy8" id="Sqm-aZ-A9J"/>
                         <outlet property="selectPatientButton" destination="oIt-GR-rDc" id="yOf-Js-qED"/>
                     </connections>
                 </viewController>
@@ -134,104 +144,111 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="HOX-AT-BVM">
-                                <rect key="frame" x="26" y="74" width="323" height="519"/>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="HOX-AT-BVM">
+                                <rect key="frame" x="26" y="74" width="323" height="583"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Név" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEm-DF-HoH">
-                                        <rect key="frame" x="0.0" y="0.0" width="323" height="65"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gfa-Ig-CHM">
-                                        <rect key="frame" x="0.0" y="65" width="323" height="65"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="namePhonePad" keyboardAppearance="light" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nem" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KiO-JC-FoI">
-                                        <rect key="frame" x="0.0" y="130" width="323" height="64.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="Nhh-Yc-Olf">
-                                        <rect key="frame" x="0.0" y="194.5" width="323" height="66"/>
-                                        <segments>
-                                            <segment title="Nő"/>
-                                            <segment title="Férfi"/>
-                                        </segments>
-                                        <connections>
-                                            <action selector="selectedSexTypeChanged:" destination="l4E-iZ-ODu" eventType="valueChanged" id="Fgs-Gz-5iw"/>
-                                        </connections>
-                                    </segmentedControl>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Születési dátum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44b-ZD-hvM">
-                                        <rect key="frame" x="0.0" y="259.5" width="323" height="65"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ked-y2-h3I">
-                                        <rect key="frame" x="0.0" y="324.5" width="323" height="65"/>
-                                        <date key="date" timeIntervalSinceReferenceDate="-56856754401.785545">
-                                            <!--0199-04-13 17:06:38 +0000-->
-                                        </date>
-                                        <connections>
-                                            <action selector="birthDateChanged:" destination="l4E-iZ-ODu" eventType="valueChanged" id="cgu-zu-tPF"/>
-                                        </connections>
-                                    </datePicker>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAJ-Szám" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u83-ML-KWk">
-                                        <rect key="frame" x="0.0" y="389.5" width="323" height="64.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rh2-dh-fzw">
-                                        <rect key="frame" x="0.0" y="454" width="323" height="65"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" keyboardAppearance="light" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cqa-mE-Wul">
+                                        <rect key="frame" x="0.0" y="0.0" width="323" height="291.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Név" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEm-DF-HoH">
+                                                <rect key="frame" x="0.0" y="0.0" width="323" height="48.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gfa-Ig-CHM">
+                                                <rect key="frame" x="0.0" y="48.5" width="323" height="48.5"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="light" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nem" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KiO-JC-FoI">
+                                                <rect key="frame" x="0.0" y="97" width="323" height="49"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="Nhh-Yc-Olf">
+                                                <rect key="frame" x="0.0" y="146" width="323" height="49.5"/>
+                                                <segments>
+                                                    <segment title="Nő"/>
+                                                    <segment title="Férfi"/>
+                                                </segments>
+                                                <connections>
+                                                    <action selector="selectedSexTypeChanged:" destination="l4E-iZ-ODu" eventType="valueChanged" id="Fgs-Gz-5iw"/>
+                                                </connections>
+                                            </segmentedControl>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Születési dátum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44b-ZD-hvM">
+                                                <rect key="frame" x="0.0" y="194.5" width="323" height="48.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1SL-4m-0bP">
+                                                <rect key="frame" x="0.0" y="243" width="323" height="48.5"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WmI-3x-RwY">
+                                        <rect key="frame" x="0.0" y="291.5" width="323" height="291.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAJ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u83-ML-KWk">
+                                                <rect key="frame" x="0.0" y="0.0" width="323" height="58.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rh2-dh-fzw">
+                                                <rect key="frame" x="0.0" y="58.5" width="323" height="58"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="light" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Iskolai évek száma" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PvW-ex-BcG">
+                                                <rect key="frame" x="0.0" y="116.5" width="323" height="58.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bKO-u8-fJw">
+                                                <rect key="frame" x="0.0" y="175" width="323" height="58"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4s-MP-S8m">
+                                                <rect key="frame" x="0.0" y="233" width="323" height="58.5"/>
+                                                <state key="normal" title="Mentés"/>
+                                                <connections>
+                                                    <action selector="savePatient:" destination="l4E-iZ-ODu" eventType="touchUpInside" id="Xhm-vE-Q67"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="44b-ZD-hvM" firstAttribute="width" secondItem="HOX-AT-BVM" secondAttribute="width" id="B32-bI-FAN"/>
-                                    <constraint firstItem="Ked-y2-h3I" firstAttribute="width" secondItem="HOX-AT-BVM" secondAttribute="width" id="Ghp-4H-R1T"/>
-                                    <constraint firstItem="Nhh-Yc-Olf" firstAttribute="width" secondItem="HOX-AT-BVM" secondAttribute="width" id="Oc3-Fr-SCf"/>
-                                    <constraint firstItem="KiO-JC-FoI" firstAttribute="width" secondItem="HOX-AT-BVM" secondAttribute="width" id="eit-Jv-GgD"/>
-                                    <constraint firstItem="gfa-Ig-CHM" firstAttribute="width" secondItem="HOX-AT-BVM" secondAttribute="width" id="eq3-9Q-b9r"/>
-                                    <constraint firstItem="Rh2-dh-fzw" firstAttribute="width" secondItem="HOX-AT-BVM" secondAttribute="width" id="ixY-Ah-x39"/>
-                                    <constraint firstItem="u83-ML-KWk" firstAttribute="width" secondItem="HOX-AT-BVM" secondAttribute="width" id="k8m-G8-Z1W"/>
-                                    <constraint firstItem="aEm-DF-HoH" firstAttribute="width" secondItem="HOX-AT-BVM" secondAttribute="width" id="num-yV-EZQ"/>
-                                </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4s-MP-S8m">
-                                <rect key="frame" x="16" y="603" width="343" height="64"/>
-                                <state key="normal" title="Mentés"/>
-                                <connections>
-                                    <action selector="savePatient:" destination="l4E-iZ-ODu" eventType="touchUpInside" id="Xhm-vE-Q67"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="HOX-AT-BVM" firstAttribute="leading" secondItem="yT1-K8-QkN" secondAttribute="leadingMargin" constant="10" id="0rd-Ph-1ZO"/>
-                            <constraint firstItem="HOX-AT-BVM" firstAttribute="top" secondItem="zSo-a9-NhS" secondAttribute="bottom" constant="10" id="1WU-pN-HvG"/>
-                            <constraint firstItem="FWu-DJ-y1t" firstAttribute="top" secondItem="B4s-MP-S8m" secondAttribute="bottom" id="8cg-jl-bxd"/>
-                            <constraint firstItem="HOX-AT-BVM" firstAttribute="centerX" secondItem="yT1-K8-QkN" secondAttribute="centerX" id="DyH-Kq-NpP"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="HOX-AT-BVM" secondAttribute="trailing" constant="10" id="Eqp-Ux-3ba"/>
-                            <constraint firstItem="HOX-AT-BVM" firstAttribute="centerY" secondItem="yT1-K8-QkN" secondAttribute="centerY" id="GcE-G6-cDP"/>
-                            <constraint firstItem="B4s-MP-S8m" firstAttribute="leading" secondItem="yT1-K8-QkN" secondAttribute="leadingMargin" id="r9o-lF-tC6"/>
-                            <constraint firstItem="HOX-AT-BVM" firstAttribute="centerX" secondItem="yT1-K8-QkN" secondAttribute="centerX" id="rv7-U0-2Bb"/>
-                            <constraint firstItem="B4s-MP-S8m" firstAttribute="top" secondItem="HOX-AT-BVM" secondAttribute="bottom" constant="10" id="wP3-KK-Qgw"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="B4s-MP-S8m" secondAttribute="trailing" id="zqm-oA-5Li"/>
+                            <constraint firstItem="HOX-AT-BVM" firstAttribute="centerX" secondItem="yT1-K8-QkN" secondAttribute="centerX" id="Dga-vl-Zqw"/>
+                            <constraint firstItem="HOX-AT-BVM" firstAttribute="leading" secondItem="yT1-K8-QkN" secondAttribute="leadingMargin" constant="10" id="NYF-rj-DI6"/>
+                            <constraint firstItem="FWu-DJ-y1t" firstAttribute="top" secondItem="HOX-AT-BVM" secondAttribute="bottom" constant="10" id="VjQ-cY-7M6"/>
+                            <constraint firstItem="HOX-AT-BVM" firstAttribute="top" secondItem="zSo-a9-NhS" secondAttribute="bottom" constant="10" id="clc-SZ-oCI"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="datePicker" destination="Ked-y2-h3I" id="Ml2-rw-hb3"/>
+                        <outlet property="birthdayTextField" destination="1SL-4m-0bP" id="ngZ-rW-QgM"/>
+                        <outlet property="bottomStackView" destination="WmI-3x-RwY" id="0zi-Fd-EBv"/>
+                        <outlet property="mainStackView" destination="HOX-AT-BVM" id="gbe-Mo-hHB"/>
                         <outlet property="nameTextField" destination="gfa-Ig-CHM" id="ZB8-2Q-feQ"/>
                         <outlet property="saveButton" destination="B4s-MP-S8m" id="UQ4-ri-6jd"/>
+                        <outlet property="schoolyearsTextField" destination="bKO-u8-fJw" id="Z1l-ok-jyU"/>
                         <outlet property="sexTypeSelector" destination="Nhh-Yc-Olf" id="lJk-15-7j6"/>
                         <outlet property="tajTextField" destination="Rh2-dh-fzw" id="bHt-aK-Mnz"/>
+                        <outlet property="topStackView" destination="cqa-mE-Wul" id="eUl-P1-ViQ"/>
                         <segue destination="r6R-Ym-yeA" kind="show" identifier="operationVCSegue" id="z0s-83-qDn"/>
                     </connections>
                 </viewController>
@@ -257,7 +274,7 @@
             </objects>
             <point key="canvasLocation" x="-98.400000000000006" y="108.39580209895054"/>
         </scene>
-        <!--Vizsgálat-->
+        <!--Adatlap-->
         <scene sceneID="YPo-ew-Y3a">
             <objects>
                 <viewController storyboardIdentifier="operationVC" id="r6R-Ym-yeA" customClass="OperationViewController" customModule="Telemedicina" customModuleProvider="target" sceneMemberID="viewController">
@@ -269,64 +286,126 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="LrF-oa-Wb8">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="LrF-oa-Wb8">
+                                <rect key="frame" x="0.0" y="74" width="375" height="583"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q0C-4P-QCf">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="328.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <state key="normal" title="Új vizsgálat">
-                                            <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="0lt-05-yem" kind="show" identifier="newOperationSegue" id="H85-B7-avz"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6bp-YT-mFx">
-                                        <rect key="frame" x="0.0" y="338.5" width="375" height="328.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <state key="normal" title="Eredmények megtekintése">
-                                            <color key="titleShadowColor" name="alternateSelectedControlColor" catalog="System" colorSpace="catalog"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="LYQ-Ag-Zdo" kind="show" identifier="showResultsSegue" id="Bon-dX-qVy"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tff-Za-yY0">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="191"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilelogonew" translatesAutoresizingMaskIntoConstraints="NO" id="b99-c4-UCu">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="95.5"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IvK-j4-EKw">
+                                                <rect key="frame" x="0.0" y="95.5" width="375" height="95.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8gj-nV-Rd6">
+                                        <rect key="frame" x="0.0" y="196" width="375" height="191"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="patientInfoTableViewCell" textLabel="aBy-5c-O9v" detailTextLabel="74w-Pk-8tP" style="IBUITableViewCellStyleValue1" id="31R-BL-DUJ" customClass="PatientInfoTableViewCell" customModule="Telemedicina" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="31R-BL-DUJ" id="LyI-Iy-4nK">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aBy-5c-O9v">
+                                                            <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="74w-Pk-8tP">
+                                                            <rect key="frame" x="316" y="12" width="44" height="20.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <connections>
+                                                    <outlet property="detailLabel" destination="74w-Pk-8tP" id="rZz-SQ-7mh"/>
+                                                    <outlet property="titleLabel" destination="aBy-5c-O9v" id="UCz-c0-yTO"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0na-bo-eln">
+                                        <rect key="frame" x="0.0" y="392" width="375" height="191"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q0C-4P-QCf" customClass="GradientButton" customModule="Telemedicina" customModuleProvider="target">
+                                                <rect key="frame" x="10" y="5" width="355" height="85.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <state key="normal" title="Új vizsgálat">
+                                                    <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="0lt-05-yem" kind="show" identifier="newOperationSegue" id="H85-B7-avz"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6bp-YT-mFx" customClass="GradientButton" customModule="Telemedicina" customModuleProvider="target">
+                                                <rect key="frame" x="10" y="100.5" width="355" height="85.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <state key="normal" title="Eredmények">
+                                                    <color key="titleShadowColor" name="alternateSelectedControlColor" catalog="System" colorSpace="catalog"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="LYQ-Ag-Zdo" kind="show" identifier="showResultsSegue" id="Bon-dX-qVy"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <edgeInsets key="layoutMargins" top="5" left="10" bottom="5" right="10"/>
+                                    </stackView>
                                 </subviews>
+                                <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="LrF-oa-Wb8" firstAttribute="centerY" secondItem="OM6-xm-sEy" secondAttribute="centerY" id="1A2-cN-55R"/>
-                            <constraint firstItem="LrF-oa-Wb8" firstAttribute="height" secondItem="OM6-xm-sEy" secondAttribute="height" id="o7m-RV-oR3"/>
+                            <constraint firstItem="LrF-oa-Wb8" firstAttribute="width" secondItem="OM6-xm-sEy" secondAttribute="width" id="G7A-ZU-1nh"/>
                             <constraint firstItem="LrF-oa-Wb8" firstAttribute="centerX" secondItem="OM6-xm-sEy" secondAttribute="centerX" id="rA4-HB-wDe"/>
-                            <constraint firstItem="LrF-oa-Wb8" firstAttribute="width" secondItem="OM6-xm-sEy" secondAttribute="width" id="zC2-Y8-kxt"/>
+                            <constraint firstItem="LrF-oa-Wb8" firstAttribute="top" secondItem="JED-fz-oEg" secondAttribute="bottom" constant="10" id="zYe-92-YdM"/>
+                            <constraint firstItem="iRz-DR-nqX" firstAttribute="top" secondItem="LrF-oa-Wb8" secondAttribute="bottom" constant="10" id="zmA-oQ-D9H"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Vizsgálat" id="l9G-YF-2N9"/>
+                    <navigationItem key="navigationItem" title="Adatlap" id="l9G-YF-2N9"/>
+                    <connections>
+                        <outlet property="infoTableView" destination="8gj-nV-Rd6" id="3Lt-rQ-QVY"/>
+                        <outlet property="nameLabel" destination="IvK-j4-EKw" id="Wcy-9V-0tS"/>
+                        <outlet property="newOperationButton" destination="q0C-4P-QCf" id="PmN-iF-0Rk"/>
+                        <outlet property="showResultsButton" destination="6bp-YT-mFx" id="r0L-sd-iRI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PMH-Sb-cbH" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3062" y="108"/>
+            <point key="canvasLocation" x="3061.5999999999999" y="107.49625187406298"/>
         </scene>
         <!--Vizsgálat 1-->
         <scene sceneID="Ofw-lP-cJr">
             <objects>
                 <tableViewController id="mDb-TL-0m4" customClass="OperationTableViewController" customModule="Telemedicina" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="zXS-kQ-JHk">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="zXS-kQ-JHk">
                         <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="operationTVC" selectionStyle="default" indentationWidth="10" reuseIdentifier="operationTVC" textLabel="nvs-OD-Vn6" style="IBUITableViewCellStyleDefault" id="BYs-y8-dy6" customClass="OperationTableViewCell" customModule="Telemedicina" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="operationTVC" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="operationTVC" textLabel="nvs-OD-Vn6" style="IBUITableViewCellStyleDefault" id="BYs-y8-dy6" customClass="OperationTableViewCell" customModule="Telemedicina" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BYs-y8-dy6" id="SLv-EF-mFQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="328" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nvs-OD-Vn6">
-                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="313" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="textColor"/>
@@ -466,7 +545,7 @@
         <scene sceneID="3VH-3V-cNk">
             <objects>
                 <tableViewController id="jmE-q6-Ovv" customClass="OperationTableViewController" customModule="Telemedicina" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="455-XH-rfK">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="455-XH-rfK">
                         <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -508,7 +587,7 @@
         <scene sceneID="cZm-VJ-OZS">
             <objects>
                 <tableViewController id="Tgo-jq-BtD" customClass="OperationTableViewController" customModule="Telemedicina" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Mru-aW-wud">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Mru-aW-wud">
                         <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -550,7 +629,7 @@
         <scene sceneID="8YI-Nc-aJv">
             <objects>
                 <tableViewController id="F0h-Qo-1nk" customClass="OperationTableViewController" customModule="Telemedicina" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="NWL-Zj-wWt">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="NWL-Zj-wWt">
                         <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -592,7 +671,7 @@
         <scene sceneID="Kbj-Cn-98p">
             <objects>
                 <tableViewController id="eSU-PE-n3D" customClass="OperationTableViewController" customModule="Telemedicina" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="IkR-bu-T38">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="IkR-bu-T38">
                         <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -633,6 +712,7 @@
     </scenes>
     <resources>
         <image name="chart" width="16" height="16"/>
+        <image name="profilelogonew" width="220" height="220"/>
         <image name="resulthistory" width="29" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>

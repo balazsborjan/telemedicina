@@ -31,6 +31,15 @@ extension Date {
         
         return dateFormatter.string(from: self)
     }
+    
+    static func date(from: String) -> Date {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy. MM. dd"
+        dateFormatter.timeZone = NSTimeZone(name: "GMT") as TimeZone!
+        
+        return dateFormatter.date(from: from)!
+    }
 }
 
 extension NSDate {
@@ -47,10 +56,19 @@ extension NSDate {
     func toString() -> String {
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy. MM. dd"
+        dateFormatter.dateFormat = "yyyy. MM. dd."
         dateFormatter.timeZone = NSTimeZone(name: "GMT") as TimeZone!
         
         return dateFormatter.string(from: self as Date)
+    }
+    
+    class func date(from: String) -> NSDate {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy. MM. dd"
+        dateFormatter.timeZone = NSTimeZone(name: "GMT") as TimeZone!
+        
+        return dateFormatter.date(from: from)! as NSDate
     }
 }
 

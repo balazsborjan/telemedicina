@@ -8,12 +8,29 @@
 
 import UIKit
 import CoreData
+import AVFoundation
 
 extension UIApplication {
     
     var statusBarView: UIView? {
         
         return value(forKey: "statusBar") as? UIView
+    }
+}
+
+extension String {
+    
+    func capitalizingFirstLetter() -> String {
+        
+        let first = String(characters.prefix(1)).capitalized
+        let other = String(characters.dropFirst())
+        
+        return first + other
+    }
+    
+    mutating func capitalizeFirstLetter() {
+        
+        self = self.capitalizingFirstLetter()
     }
 }
 
@@ -27,10 +44,41 @@ class OperationTableViewController: UITableViewController {
     
     var adjustForTabbarInsets: UIEdgeInsets!
     
+    var isManualTableHeight: Bool?
+    
+    //Depricated
+    var viewControllerShouldPop: Bool = false {
+        
+        didSet {
+            
+            if viewControllerShouldPop {
+                
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.contentMode = .redraw
+        
         setInsets()
+        setTableViewRowHeight()
+        
+        if let tabBarC = self.tabBarController as? OperationTabBarController {
+            
+            if tabBarC.currentTabBarItemIndex > 0 {
+                
+                self.tabBarController?.navigationItem.hidesBackButton = true
+                self.tabBarController?.navigationItem.leftBarButtonItem = nil
+                
+            } else {
+        
+                let cancelOperationBarButtonItem = UIBarButtonItem(title: "Megszakít", style: .plain, target: self, action: #selector(cancelOperation))
+                self.tabBarController?.navigationItem.setLeftBarButton(cancelOperationBarButtonItem, animated: true)
+            }
+        }
         
         let finishOperationBarButtonItem = UIBarButtonItem(title: "Kész", style: .plain, target: self, action: #selector(finishOperation))
         
@@ -39,8 +87,6 @@ class OperationTableViewController: UITableViewController {
         self.tabBarController?.tabBar.backgroundColor = UIColor.white
         self.tabBarController?.title = self.tabBarItem.title
         
-        self.tableView.contentMode = .redraw
-        
         self.fetchedWords = ((self.tabBarController as? OperationTabBarController)?.fetchedWords)!
     }
     
@@ -48,11 +94,8 @@ class OperationTableViewController: UITableViewController {
         super.viewDidLayoutSubviews()
         
         setInsets()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        //setTableViewRowHeight()
     }
     
     private func setInsets() {
@@ -66,10 +109,10 @@ class OperationTableViewController: UITableViewController {
     @objc private func finishOperation() {
         
         let finishOperationAlert = UIAlertController(
-            title: "Vizsgálat befejezése",
-            message: "Biztosan befejezi az aktuális vizsgálatot?", preferredStyle: .alert)
+            title: "Aktuális vizsgálat befejezése",
+            message: "", preferredStyle: .alert)
         
-        finishOperationAlert.addAction(UIAlertAction(title: "Mégsem", style: .cancel, handler: { (action: UIAlertAction) in
+        finishOperationAlert.addAction(UIAlertAction(title: "Mégsem", style: .default, handler: { (action: UIAlertAction) in
             //Do nothing
         }))
         
@@ -85,13 +128,25 @@ class OperationTableViewController: UITableViewController {
                     
                     tabBarC.calculateResult()
                     
+                    for viewController in (self.navigationController?.viewControllers)! {
+                        
+                        if viewController is ResultsTabBarController {
+                        
+                            (viewController as! ResultsTabBarController).backBarButtonChangeNeeded = true
+                            
+                            self.navigationController?.popToViewController(viewController, animated: true)
+                            return
+                        }
+                    }
+                    
                     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                     
                     if let resultVC = storyBoard.instantiateViewController(withIdentifier: "resultVC") as? ResultsTabBarController {
                         
                         resultVC.backBarButtonChangeNeeded = true
                         
-                        self.navigationController?.pushViewController(resultVC, animated: true)
+                        self.navigationController?.viewControllers.append(resultVC)
+                        self.navigationController?.popToViewController(resultVC, animated: true)
                     }
                     
                 } else {
@@ -106,21 +161,57 @@ class OperationTableViewController: UITableViewController {
         
         self.present(finishOperationAlert, animated: true, completion: nil)
     }
+    
+    @objc private func cancelOperation() {
+        
+        let cancelOperationAlert = UIAlertController(title: "Vizsgálat megszakítása", message: "Biztosan megszakítja a vizsgálatot?", preferredStyle: .alert)
+        
+        cancelOperationAlert.addAction(UIAlertAction(title: "Megszakítás", style: .destructive, handler: { (action: UIAlertAction) in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        
+        cancelOperationAlert.addAction(UIAlertAction(title: "Mégsem", style: .default, handler: { (action: UIAlertAction) in
+            //Do nothing
+        }))
+        
+        self.present(cancelOperationAlert, animated: true, completion: nil)
+    }
+    
+    private func setTableViewRowHeight() {
+        
+        let orientation = UIDevice.current.orientation
+        
+        let topY = (self.tabBarController?.navigationController?.navigationBar.frame.maxY)!
+        
+        let bottomY = self.tabBarController?.tabBar.frame.minY
+        
+        let tvHeight = bottomY! - topY
+        
+        let rowHeight = tvHeight / 16
+        
+        if orientation == .portrait || ((orientation == .faceUp || orientation == .faceDown) && (self.view.frame.width < self.view.frame.height)) {
+            
+            tableView.isScrollEnabled = false
+            tableView.rowHeight = rowHeight
+            tableView.estimatedRowHeight = rowHeight
+            
+        } else {
+            
+            tableView.isScrollEnabled = true
+            tableView.rowHeight = rowHeight * 2
+            tableView.estimatedRowHeight = rowHeight * 2
+        }
+    }
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        
         return fetchedWords.keys.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 4
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
-        return Array(fetchedWords.keys)[section]
+        return 4
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -196,5 +287,35 @@ class OperationTableViewController: UITableViewController {
         
         return nil
     }
-
+    
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        
+        if let cell = tableView.cellForRow(at: indexPath) as? OperationTableViewCell {
+            
+            //let language = Locale.current.languageCode
+            let language = "hu"
+            
+            let voice = AVSpeechSynthesisVoice(language: language)
+            
+            if let text = cell.wordLabel.text {
+                
+                let toSay = AVSpeechUtterance(string: text)
+                
+                toSay.voice = voice
+                
+                let spk = AVSpeechSynthesizer()
+                spk.speak(toSay)
+            }
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+

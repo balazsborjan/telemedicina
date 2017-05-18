@@ -2,7 +2,7 @@
 //  Patient+CoreDataProperties.swift
 //  Telemedicina
 //
-//  Created by Balázs Bojrán on 2017. 04. 24..
+//  Created by Balázs Bojrán on 2017. 05. 11..
 //  Copyright © 2017. SZTE. All rights reserved.
 //
 
@@ -16,10 +16,11 @@ extension Patient {
         return NSFetchRequest<Patient>(entityName: "Patient")
     }
 
-    @NSManaged public var name: String?
     @NSManaged public var birthDate: NSDate?
-    @NSManaged public var taj: String?
+    @NSManaged public var name: String?
     @NSManaged public var sexType: Int32
+    @NSManaged public var taj: String?
+    @NSManaged public var schoolYears: Int32
     @NSManaged public var results: NSSet?
 
 }

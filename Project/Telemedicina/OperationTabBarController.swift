@@ -59,11 +59,11 @@ class OperationTabBarController: UITabBarController {
                 
                 if fetchedWords.keys.contains(o.category!) {
                     
-                    fetchedWords[o.category!]?.append(o.data!)
+                    fetchedWords[o.category!]?.append(o.data!.capitalizingFirstLetter())
                     
                 } else {
                     
-                    fetchedWords[o.category!] = [o.data!]
+                    fetchedWords[o.category!] = [o.data!.capitalizingFirstLetter()]
                 }
             }
         }

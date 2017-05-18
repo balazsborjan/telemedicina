@@ -12,7 +12,7 @@ class ResultChartView: UIView {
     
     private var chartLineView: ChartLineView!
     
-    private var titleLabel: UILabel!
+    //private var titleLabel: UILabel!
     
     private var titleHeight: CGFloat!
     
@@ -30,6 +30,7 @@ class ResultChartView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         
         titleHeight = self.frame.height / 9 * 2
         
@@ -53,14 +54,14 @@ class ResultChartView: UIView {
             height: chartHeight)
         )
         
-        chartLineView.backgroundColor = UIColor.chartViewColor()
+        chartLineView.backgroundColor = UIColor.clear
         
         self.clipsToBounds = true
         self.layer.cornerRadius = 10
         
         self.addSubview(chartLineView)
         
-        self.backgroundColor = UIColor.chartViewColor()
+        GradientLayerGenerator.SetDefaultGradientColorTo(view: self)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -69,29 +70,42 @@ class ResultChartView: UIView {
     
     private func addTitleinformations() {
         
-        if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
+        let orientation = UIDevice.current.orientation
+        
+        switch orientation {
+        case .portrait:
             
-            if !(UIDevice.current.orientation == UIDeviceOrientation.portraitUpsideDown) {
+            drawPortraitMode()
             
-                let labelWidth = self.frame.width / 2
-                
-                createTitleLabel(withHeight: titleHeight / 2)
-                createSexTypeLabel(toPoint: CGPoint(x: labelWidth, y: 0))
-                createAgeLabel(toPoint: CGPoint(x: labelWidth, y: titleLabel.frame.maxY))
-                
-                createAvarageLabel(withTextAlignment: NSTextAlignment.left, toPoint: CGPoint(x: 5, y: titleLabel.frame.maxY), withHeight: titleHeight / 2)
-            }
+        case .faceUp, .faceDown:
             
-        } else {
+            (self.frame.width < self.frame.height) ? drawPortraitMode() : drawLandscapeMode()
             
-            createTitleLabel(withHeight: titleHeight)
-            createAvarageLabel(withTextAlignment: NSTextAlignment.right, toPoint: CGPoint(x: self.frame.width / 2, y: 0), withHeight: titleHeight)
+        default:
+            
+            drawLandscapeMode()
         }
+    }
+    
+    private func drawPortraitMode() {
+        
+        let labelWidth = self.frame.width / 2
+        
+        createTitleLabel(withHeight: titleHeight / 2)
+        createSexTypeLabel(toPoint: CGPoint(x: labelWidth, y: 0))
+        createAgeLabel(toPoint: CGPoint(x: labelWidth, y: self.subviews[0].frame.maxY))
+        createAvarageLabel(withTextAlignment: NSTextAlignment.left, toPoint: CGPoint(x: 5, y: self.subviews[0].frame.maxY), withHeight: titleHeight / 2)
+    }
+    
+    private func drawLandscapeMode() {
+        
+        createTitleLabel(withHeight: titleHeight)
+        createAvarageLabel(withTextAlignment: NSTextAlignment.right, toPoint: CGPoint(x: self.frame.width / 2, y: 0), withHeight: titleHeight)
     }
     
     private func createTitleLabel(withHeight height: CGFloat) {
         
-        titleLabel = UILabel(frame: CGRect(
+        let titleLabel = UILabel(frame: CGRect(
             x: 5,
             y: 0,
             width: self.frame.width / 2 - 10,
@@ -99,7 +113,7 @@ class ResultChartView: UIView {
         )
         
         titleLabel.text = patient?.name
-        titleLabel.font = titleLabel.font.withSize(22)
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.textAlignment = .left
         titleLabel.textColor = UIColor.white

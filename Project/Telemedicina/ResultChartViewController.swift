@@ -23,10 +23,6 @@ class ResultChartViewController: UIViewController {
         
         drawChartView(chartViewHeightScale: nil)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     private func drawChartView(chartViewHeightScale: CGFloat?) {
         
@@ -73,8 +69,18 @@ extension UIColor {
         self.init(red:(netHex >> 16) & 0xff, green:(netHex >> 8) & 0xff, blue:netHex & 0xff)
     }
     
-    class func chartViewColor() -> UIColor {
+    class func chartViewColor0() -> UIColor {
         
-        return UIColor(red: 244, green: 75, blue: 60)
+        return UIColor(red: 248, green: 91, blue: 72)
+    }
+    
+    class func chartViewColor1() -> UIColor {
+        
+        return UIColor(red: 244, green: 76, blue: 60)
+    }
+    
+    class func chartViewColor2() -> UIColor {
+        
+        return UIColor(red: 242, green: 35, blue: 36)
     }
 }

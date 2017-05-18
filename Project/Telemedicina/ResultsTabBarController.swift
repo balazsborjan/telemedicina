@@ -21,25 +21,19 @@ class ResultsTabBarController: UITabBarController {
         if backBarButtonChangeNeeded {
             
             self.navigationItem.hidesBackButton = true
-            let newBackButton = UIBarButtonItem(title: "Új vizsgálat", style: UIBarButtonItemStyle.plain, target: self, action: #selector(back))
+            let newBackButton = UIBarButtonItem(title: "Adatlap", style: UIBarButtonItemStyle.plain, target: self, action: #selector(back))
             self.navigationItem.leftBarButtonItem = newBackButton
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @objc private func back() {
-        
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        
-        if let operationVC = storyBoard.instantiateViewController(withIdentifier: "operationVC") as? OperationViewController {
+
+        for viewController in (self.navigationController?.viewControllers)! {
             
-            operationVC.navigateBackToMainController = true
-            self.navigationController?.pushViewController(operationVC, animated: true)
+            if viewController is OperationViewController {
+                
+                self.navigationController?.popToViewController(viewController, animated: true)
+            }
         }
     }
-
 }

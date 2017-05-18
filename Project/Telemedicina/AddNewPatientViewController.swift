@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import CloudKit
 
 class AddNewPatientViewController: UIViewController {
     
@@ -15,19 +16,35 @@ class AddNewPatientViewController: UIViewController {
     
     let validator = PatientValidator()
     
+    @IBOutlet weak var topStackView: UIStackView!
+    
+    @IBOutlet weak var bottomStackView: UIStackView!
+    
+    @IBOutlet weak var mainStackView: UIStackView!
+    
     @IBOutlet weak var nameTextField: UITextField!
     
     @IBOutlet weak var sexTypeSelector: UISegmentedControl!
     
-    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var birthdayTextField: UITextField!
     
     @IBOutlet weak var tajTextField: UITextField!
     
     @IBOutlet weak var saveButton: UIButton!
     
+    @IBOutlet weak var schoolyearsTextField: UITextField!
+    
     let pickerViewComponents = ["Nő", "Férfi"]
     
     var selectedSexType: String!
+    
+    let datePickerKeyBoard = UIDatePicker()
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        changeMainStackAxis()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,22 +57,14 @@ class AddNewPatientViewController: UIViewController {
         
         nameTextField.delegate = self
         tajTextField.delegate = self
+        birthdayTextField.delegate = self
         
-        let minimumYear = -89
-        let maximumYear = -16
+        datePickerKeyBoard.addTarget(self, action: #selector(selectedBirthDayChanged), for: .valueChanged)
+        datePickerKeyBoard.setDate(Date(), animated: true)
+        datePickerKeyBoard.datePickerMode = .date
+        datePickerKeyBoard.locale = NSLocale.current
         
-        var dateComponents = DateComponents()
-        
-        dateComponents.year = minimumYear
-        
-        let minimumDate = Calendar.current.date(byAdding: dateComponents, to: Date())
-        
-        dateComponents.year = maximumYear
-        
-        let maximumDate = Calendar.current.date(byAdding: dateComponents, to: Date())
-        
-        datePicker.minimumDate = minimumDate
-        datePicker.maximumDate = maximumDate
+        birthdayTextField.inputView = datePickerKeyBoard
     }
     
     @objc private func tappedView(sender: UITapGestureRecognizer) {
@@ -63,17 +72,34 @@ class AddNewPatientViewController: UIViewController {
         self.view.endEditing(true)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    private func changeMainStackAxis() {
         
-        if let operationVC = segue.destination as? OperationViewController {
+        let orientation = UIDevice.current.orientation
+        
+        switch orientation {
+        case .portrait:
             
-            operationVC.navigateBackToMainController = true
+            setMainStackAxis(to: .vertical)
+            
+        case .faceUp, .faceDown:
+            
+            (self.view.frame.width < self.view.frame.height) ? setMainStackAxis(to: .vertical) : setMainStackAxis(to: .horizontal)
+            
+        default:
+            
+            setMainStackAxis(to: .horizontal)
+        }
+    }
+    
+    private func setMainStackAxis(to axis: UILayoutConstraintAxis) {
+    
+        mainStackView.axis = axis
+        
+        switch axis {
+        case .horizontal:
+            mainStackView.spacing = 10.0
+        case .vertical:
+            mainStackView.spacing = 0.0
         }
     }
     
@@ -81,14 +107,16 @@ class AddNewPatientViewController: UIViewController {
         
         if PatientValidator.isValid(name: nameTextField.text) &&
             PatientValidator.isValid(TAJ: tajTextField.text) &&
+            PatientValidator.isValid(schoolYears: Int(schoolyearsTextField.text ?? "0")) &&
             sexTypeSelector.selectedSegmentIndex > -1 {
             
             patientPOJO.name = nameTextField.text
             patientPOJO.TAJ = tajTextField.text
+            patientPOJO.schoolYears = Int(schoolyearsTextField.text ?? "0")
             
-            if patientPOJO.birthDate == nil {
+            if patientPOJO.birthDate == nil && birthdayTextField.text != nil {
                 
-                patientPOJO.birthDate = datePicker.date
+                patientPOJO.birthDate = Date.date(from: birthdayTextField.text!)
             }
                 
             return true
@@ -97,11 +125,12 @@ class AddNewPatientViewController: UIViewController {
         return false
     }
     
-    @IBAction func birthDateChanged(_ sender: UIDatePicker) {
+    @objc private func selectedBirthDayChanged(sender: UIDatePicker) {
         
-        patientPOJO.birthDate = sender.date
+        birthdayTextField.text = sender.date.toString()
         
         if isSavePatientEnabled() {
+            
             saveButton.isEnabled = true
         }
     }
@@ -118,6 +147,7 @@ class AddNewPatientViewController: UIViewController {
         }
         
         if isSavePatientEnabled() {
+            
             saveButton.isEnabled = true
         }
         
@@ -136,11 +166,12 @@ class AddNewPatientViewController: UIViewController {
         let name = "Név: \(patientPOJO.name!)\n"
         let sex = "Nem: \(patientPOJO.sexType == SexType.No ? "Nő" : "Férfi") \n"
         let birthDate = "Születési dátum: \(patientPOJO.birthDate!.toString()) \n"
-        let taj = "TAJ szám: \(patientPOJO.TAJ!)"
+        let taj = "TAJ szám: \(patientPOJO.TAJ!) \n"
+        let schoolYears = "Iskolai évek száma: \(patientPOJO.schoolYears!)"
         
         let savePatientAlert = UIAlertController(
             title: "Beteg rögzítése",
-            message: "Adatak: \n" + name + sex + birthDate + taj, preferredStyle: .alert)
+            message: "Adatak: \n" + name + sex + birthDate + taj + schoolYears, preferredStyle: .alert)
         
         savePatientAlert.addAction(UIAlertAction(title: "Mégsem", style: .cancel, handler: { (action: UIAlertAction) in
             //Do nothing - close the popup
@@ -154,6 +185,7 @@ class AddNewPatientViewController: UIViewController {
             patient!.birthDate = self.patientPOJO.birthDate! as NSDate
             patient!.sexType = Int32(self.patientPOJO.sexType.hashValue)
             patient!.taj = self.patientPOJO.TAJ
+            patient!.schoolYears = Int32(self.patientPOJO.schoolYears)
             
             try! managedObjectContext?.save()
             
@@ -170,13 +202,28 @@ extension AddNewPatientViewController : UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
+        textField.resignFirstResponder()
+        
         if textField == self.nameTextField {
             
             self.patientPOJO.name = textField.text
+            self.birthdayTextField.becomeFirstResponder()
+            
+        } else if textField == self.birthdayTextField {
+          
+            let selectedDate = Date.date(from: textField.text!)
+            self.patientPOJO.birthDate = selectedDate
+            self.tajTextField.becomeFirstResponder()
             
         } else if textField == self.tajTextField {
             
             self.patientPOJO.TAJ = textField.text
+            self.schoolyearsTextField.becomeFirstResponder()
+            
+        } else if textField == self.schoolyearsTextField {
+            
+            let sy = Int(textField.text!)
+            self.patientPOJO.schoolYears = sy
         }
         
         if self.isSavePatientEnabled() {
@@ -185,6 +232,7 @@ extension AddNewPatientViewController : UITextFieldDelegate {
         }
         
         self.view.endEditing(true)
+        
         return false
     }
 }
@@ -205,21 +253,54 @@ extension AddNewPatientViewController {
                 
                 selectedTextField = nameTextField
                 
+            } else if birthdayTextField.isEditing {
+                
+                selectedTextField = birthdayTextField
+                
             } else if tajTextField.isEditing {
                 
                 selectedTextField = tajTextField
+                
+            } else if schoolyearsTextField.isEditing {
+                
+                selectedTextField = schoolyearsTextField
             }
             
-            let textFieldBottomY = selectedTextField.frame.maxY + saveButton.frame.height + (navigationController?.navigationBar.frame.height)!
+            let parent = topStackView.subviews.contains(selectedTextField) ? topStackView : bottomStackView
+            
+            let textFieldBottomY = selectedTextField.frame.maxY + (parent?.frame.minY)! + (navigationController?.navigationBar.frame.height)!
             
             if textFieldBottomY > keyboardRectTopY {
                 
-                self.view.frame.origin.y -= (textFieldBottomY - keyboardRectTopY)
+                let destinationOriginY = keyboardRectTopY - textFieldBottomY - (navigationController?.navigationBar.frame.height)!
+                
+                if destinationOriginY < keyboardRectTopY {
+                    
+                    self.view.frame.origin.y = keyboardRectTopY - self.view.frame.height
+                }
+                
+                self.view.frame.origin.y = destinationOriginY
             }
         }
     }
     
     func keyboardWillHide(notification: NSNotification) {
+        
+        self.patientPOJO.name = nameTextField.text
+        
+        self.patientPOJO.TAJ = tajTextField.text
+        
+        if schoolyearsTextField.text != nil && !(schoolyearsTextField.text!.isEmpty) {
+            
+            let sy = Int(schoolyearsTextField.text!)
+            self.patientPOJO.schoolYears = sy
+        }
+        
+        if birthdayTextField.text != nil && !(birthdayTextField.text!.isEmpty) {
+            
+            let birthDay = Date.date(from: birthdayTextField.text!)
+            patientPOJO.birthDate = birthDay
+        }
         
         if self.view.frame.origin.y != 0 {
             
