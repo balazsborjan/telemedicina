@@ -46,10 +46,12 @@ class OperationViewController: UIViewController {
     
     private func setInfoTableViewRowHeight() {
         
+        let rowNum = CGFloat(infoTableView.numberOfRows(inSection: 0))
+        
         let tvHeight = (self.view.frame.maxY - (self.navigationController?.navigationBar.frame.maxY)!) / 3 - 20
         
-        infoTableView.rowHeight = tvHeight / 4
-        infoTableView.estimatedRowHeight = tvHeight / 4
+        infoTableView.rowHeight = tvHeight / rowNum
+        infoTableView.estimatedRowHeight = tvHeight / rowNum
     }
     
     private func setInfoTableViewHeaderSeparator() {
@@ -77,7 +79,7 @@ extension OperationViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 4
+        return 3
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -103,9 +105,6 @@ extension OperationViewController : UITableViewDelegate, UITableViewDataSource {
                 case 2:
                     patientInfoCell.titleLabel.text = "TAJ szám"
                     patientInfoCell.detailLabel.text = patient!.taj
-                case 3:
-                    patientInfoCell.titleLabel.text = "Iskolai évek száma"
-                    patientInfoCell.detailLabel.text = String(patient!.schoolYears)
                     
                     cell.preservesSuperviewLayoutMargins = false
                     cell.separatorInset = UIEdgeInsets.zero

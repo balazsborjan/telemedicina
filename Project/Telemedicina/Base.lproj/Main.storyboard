@@ -144,88 +144,107 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Ug0-jS-VSQ">
+                                <rect key="frame" x="16" y="64" width="343" height="593"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BSq-jn-iV0">
+                                        <rect key="frame" x="156.5" y="0.0" width="30" height="74"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="peJ-7y-RjH">
+                                        <rect key="frame" x="156.5" y="74" width="30" height="74.5"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XCq-bL-I2S">
+                                        <rect key="frame" x="156.5" y="148.5" width="30" height="74"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LMQ-MB-SFZ">
+                                        <rect key="frame" x="156.5" y="222.5" width="30" height="74"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W44-wb-9aa">
+                                        <rect key="frame" x="156.5" y="296.5" width="30" height="74"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RcL-v1-dOI">
+                                        <rect key="frame" x="156.5" y="370.5" width="30" height="74.5"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jxU-tu-5xe">
+                                        <rect key="frame" x="156.5" y="445" width="30" height="74"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4s-MP-S8m" customClass="GradientButton" customModule="Telemedicina" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="519" width="343" height="74"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Mentés"/>
+                                        <connections>
+                                            <action selector="savePatient:" destination="l4E-iZ-ODu" eventType="touchUpInside" id="Xhm-vE-Q67"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="B4s-MP-S8m" firstAttribute="width" secondItem="Ug0-jS-VSQ" secondAttribute="width" id="N3i-9j-XWo"/>
+                                </constraints>
+                            </stackView>
                             <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="HOX-AT-BVM">
-                                <rect key="frame" x="26" y="74" width="323" height="583"/>
+                                <rect key="frame" x="16" y="74" width="343" height="499"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cqa-mE-Wul">
-                                        <rect key="frame" x="0.0" y="0.0" width="323" height="291.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="249.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Név" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEm-DF-HoH">
-                                                <rect key="frame" x="0.0" y="0.0" width="323" height="48.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="62.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gfa-Ig-CHM">
-                                                <rect key="frame" x="0.0" y="48.5" width="323" height="48.5"/>
+                                                <rect key="frame" x="0.0" y="62.5" width="343" height="62"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="light" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nem" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KiO-JC-FoI">
-                                                <rect key="frame" x="0.0" y="97" width="323" height="49"/>
+                                                <rect key="frame" x="0.0" y="124.5" width="343" height="62.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="Nhh-Yc-Olf">
-                                                <rect key="frame" x="0.0" y="146" width="323" height="49.5"/>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="Nhh-Yc-Olf">
+                                                <rect key="frame" x="0.0" y="187" width="343" height="63.5"/>
                                                 <segments>
                                                     <segment title="Nő"/>
                                                     <segment title="Férfi"/>
                                                 </segments>
+                                                <color key="tintColor" red="1" green="0.33214801399999999" blue="0.28879392659999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <action selector="selectedSexTypeChanged:" destination="l4E-iZ-ODu" eventType="valueChanged" id="Fgs-Gz-5iw"/>
                                                 </connections>
                                             </segmentedControl>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WmI-3x-RwY">
+                                        <rect key="frame" x="0.0" y="249.5" width="343" height="249.5"/>
+                                        <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Születési dátum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44b-ZD-hvM">
-                                                <rect key="frame" x="0.0" y="194.5" width="323" height="48.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="62.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1SL-4m-0bP">
-                                                <rect key="frame" x="0.0" y="243" width="323" height="48.5"/>
+                                                <rect key="frame" x="0.0" y="62.5" width="343" height="62"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WmI-3x-RwY">
-                                        <rect key="frame" x="0.0" y="291.5" width="323" height="291.5"/>
-                                        <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAJ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u83-ML-KWk">
-                                                <rect key="frame" x="0.0" y="0.0" width="323" height="58.5"/>
+                                                <rect key="frame" x="0.0" y="124.5" width="343" height="62.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rh2-dh-fzw">
-                                                <rect key="frame" x="0.0" y="58.5" width="323" height="58"/>
+                                                <rect key="frame" x="0.0" y="187" width="343" height="62.5"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="light" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Iskolai évek száma" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PvW-ex-BcG">
-                                                <rect key="frame" x="0.0" y="116.5" width="323" height="58.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bKO-u8-fJw">
-                                                <rect key="frame" x="0.0" y="175" width="323" height="58"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                            </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4s-MP-S8m">
-                                                <rect key="frame" x="0.0" y="233" width="323" height="58.5"/>
-                                                <state key="normal" title="Mentés"/>
-                                                <connections>
-                                                    <action selector="savePatient:" destination="l4E-iZ-ODu" eventType="touchUpInside" id="Xhm-vE-Q67"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -233,10 +252,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="HOX-AT-BVM" secondAttribute="trailing" id="52Y-tc-UlW"/>
+                            <constraint firstItem="FWu-DJ-y1t" firstAttribute="top" secondItem="Ug0-jS-VSQ" secondAttribute="bottom" constant="10" id="6Rh-7i-oNN"/>
                             <constraint firstItem="HOX-AT-BVM" firstAttribute="centerX" secondItem="yT1-K8-QkN" secondAttribute="centerX" id="Dga-vl-Zqw"/>
-                            <constraint firstItem="HOX-AT-BVM" firstAttribute="leading" secondItem="yT1-K8-QkN" secondAttribute="leadingMargin" constant="10" id="NYF-rj-DI6"/>
-                            <constraint firstItem="FWu-DJ-y1t" firstAttribute="top" secondItem="HOX-AT-BVM" secondAttribute="bottom" constant="10" id="VjQ-cY-7M6"/>
+                            <constraint firstItem="Ug0-jS-VSQ" firstAttribute="centerX" secondItem="yT1-K8-QkN" secondAttribute="centerX" id="JKt-LU-hoH"/>
+                            <constraint firstItem="HOX-AT-BVM" firstAttribute="leading" secondItem="yT1-K8-QkN" secondAttribute="leadingMargin" id="NYF-rj-DI6"/>
+                            <constraint firstItem="B4s-MP-S8m" firstAttribute="top" secondItem="HOX-AT-BVM" secondAttribute="bottom" constant="10" id="YdL-MD-Ub7"/>
                             <constraint firstItem="HOX-AT-BVM" firstAttribute="top" secondItem="zSo-a9-NhS" secondAttribute="bottom" constant="10" id="clc-SZ-oCI"/>
+                            <constraint firstItem="Ug0-jS-VSQ" firstAttribute="top" secondItem="zSo-a9-NhS" secondAttribute="bottom" id="mg1-go-9Rt"/>
+                            <constraint firstItem="Ug0-jS-VSQ" firstAttribute="width" secondItem="Rh2-dh-fzw" secondAttribute="width" id="wpn-lT-py5"/>
                         </constraints>
                     </view>
                     <connections>
@@ -245,7 +269,6 @@
                         <outlet property="mainStackView" destination="HOX-AT-BVM" id="gbe-Mo-hHB"/>
                         <outlet property="nameTextField" destination="gfa-Ig-CHM" id="ZB8-2Q-feQ"/>
                         <outlet property="saveButton" destination="B4s-MP-S8m" id="UQ4-ri-6jd"/>
-                        <outlet property="schoolyearsTextField" destination="bKO-u8-fJw" id="Z1l-ok-jyU"/>
                         <outlet property="sexTypeSelector" destination="Nhh-Yc-Olf" id="lJk-15-7j6"/>
                         <outlet property="tajTextField" destination="Rh2-dh-fzw" id="bHt-aK-Mnz"/>
                         <outlet property="topStackView" destination="cqa-mE-Wul" id="eUl-P1-ViQ"/>
@@ -254,7 +277,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Wc-dF-vEl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1977" y="543"/>
+            <point key="canvasLocation" x="1976.8" y="542.87856071964018"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sQB-wm-jVr">
@@ -343,6 +366,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q0C-4P-QCf" customClass="GradientButton" customModule="Telemedicina" customModuleProvider="target">
                                                 <rect key="frame" x="10" y="5" width="355" height="85.5"/>
+                                                <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                 <state key="normal" title="Új vizsgálat">
                                                     <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -365,7 +389,9 @@
                                         <edgeInsets key="layoutMargins" top="5" left="10" bottom="5" right="10"/>
                                     </stackView>
                                 </subviews>
-                                <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                                <constraints>
+                                    <constraint firstItem="0na-bo-eln" firstAttribute="width" secondItem="LrF-oa-Wb8" secondAttribute="width" id="8tr-MH-ALq"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -474,7 +500,7 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Előzmények" image="resulthistory" id="7aa-Il-k80"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="Előzmények" image="resulthistory_new-1" id="7aa-Il-k80"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4MZ-O3-nfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -713,11 +739,11 @@
     <resources>
         <image name="chart" width="16" height="16"/>
         <image name="profilelogonew" width="220" height="220"/>
-        <image name="resulthistory" width="29" height="29"/>
+        <image name="resulthistory_new-1" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="z0s-83-qDn"/>
-        <segue reference="UKU-RJ-wq0"/>
+        <segue reference="Bon-dX-qVy"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.98431372549019602" green="0.058823529411764705" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
 </document>

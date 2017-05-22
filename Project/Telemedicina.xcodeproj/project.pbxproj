@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		052342471ED0514F00268342 /* ChartInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052342461ED0514F00268342 /* ChartInfoTableViewCell.swift */; };
 		05291D521ECC681600ECE774 /* GradientLayerGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05291D511ECC681600ECE774 /* GradientLayerGenerator.swift */; };
 		05291D561ECC9EC000ECE774 /* PatientInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05291D551ECC9EC000ECE774 /* PatientInfoTableViewCell.swift */; };
 		05898C941ECDB279005C1C29 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05898C931ECDB279005C1C29 /* GradientButton.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		052342461ED0514F00268342 /* ChartInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartInfoTableViewCell.swift; sourceTree = "<group>"; };
 		05291D511ECC681600ECE774 /* GradientLayerGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientLayerGenerator.swift; sourceTree = "<group>"; };
 		05291D551ECC9EC000ECE774 /* PatientInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientInfoTableViewCell.swift; sourceTree = "<group>"; };
 		056596B71EB21024002F6A98 /* Telemedicina.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Telemedicina.entitlements; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				05B9EA8B1EAE659B001706E5 /* OperationTableViewCell.swift */,
 				05B9EA951EAE659B001706E5 /* ResultTableViewCell.swift */,
 				05291D551ECC9EC000ECE774 /* PatientInfoTableViewCell.swift */,
+				052342461ED0514F00268342 /* ChartInfoTableViewCell.swift */,
 			);
 			name = TableViewCells;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				05B9EA9B1EAE659B001706E5 /* HomePageViewController.swift in Sources */,
 				05B9EAA21EAE659B001706E5 /* ResultCalculator.swift in Sources */,
 				05B9EAA51EAE659B001706E5 /* ResultsTabBarController.swift in Sources */,
+				052342471ED0514F00268342 /* ChartInfoTableViewCell.swift in Sources */,
 				05B9EA9F1EAE659B001706E5 /* OperationViewController.swift in Sources */,
 				05B9EA991EAE659B001706E5 /* AddNewPatientViewController.swift in Sources */,
 				05B9EA731EAE5F54001706E5 /* AppDelegate.swift in Sources */,

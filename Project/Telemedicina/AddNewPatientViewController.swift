@@ -32,8 +32,6 @@ class AddNewPatientViewController: UIViewController {
     
     @IBOutlet weak var saveButton: UIButton!
     
-    @IBOutlet weak var schoolyearsTextField: UITextField!
-    
     let pickerViewComponents = ["Nő", "Férfi"]
     
     var selectedSexType: String!
@@ -107,12 +105,10 @@ class AddNewPatientViewController: UIViewController {
         
         if PatientValidator.isValid(name: nameTextField.text) &&
             PatientValidator.isValid(TAJ: tajTextField.text) &&
-            PatientValidator.isValid(schoolYears: Int(schoolyearsTextField.text ?? "0")) &&
             sexTypeSelector.selectedSegmentIndex > -1 {
             
             patientPOJO.name = nameTextField.text
             patientPOJO.TAJ = tajTextField.text
-            patientPOJO.schoolYears = Int(schoolyearsTextField.text ?? "0")
             
             if patientPOJO.birthDate == nil && birthdayTextField.text != nil {
                 
@@ -132,6 +128,10 @@ class AddNewPatientViewController: UIViewController {
         if isSavePatientEnabled() {
             
             saveButton.isEnabled = true
+            
+        } else {
+            
+            self.saveButton.isEnabled = false
         }
     }
 
@@ -149,6 +149,10 @@ class AddNewPatientViewController: UIViewController {
         if isSavePatientEnabled() {
             
             saveButton.isEnabled = true
+            
+        } else {
+            
+            self.saveButton.isEnabled = false
         }
         
         self.view.endEditing(true)
@@ -167,11 +171,10 @@ class AddNewPatientViewController: UIViewController {
         let sex = "Nem: \(patientPOJO.sexType == SexType.No ? "Nő" : "Férfi") \n"
         let birthDate = "Születési dátum: \(patientPOJO.birthDate!.toString()) \n"
         let taj = "TAJ szám: \(patientPOJO.TAJ!) \n"
-        let schoolYears = "Iskolai évek száma: \(patientPOJO.schoolYears!)"
         
         let savePatientAlert = UIAlertController(
             title: "Beteg rögzítése",
-            message: "Adatak: \n" + name + sex + birthDate + taj + schoolYears, preferredStyle: .alert)
+            message: "Adatak: \n" + name + sex + birthDate + taj, preferredStyle: .alert)
         
         savePatientAlert.addAction(UIAlertAction(title: "Mégsem", style: .cancel, handler: { (action: UIAlertAction) in
             //Do nothing - close the popup
@@ -185,7 +188,6 @@ class AddNewPatientViewController: UIViewController {
             patient!.birthDate = self.patientPOJO.birthDate! as NSDate
             patient!.sexType = Int32(self.patientPOJO.sexType.hashValue)
             patient!.taj = self.patientPOJO.TAJ
-            patient!.schoolYears = Int32(self.patientPOJO.schoolYears)
             
             try! managedObjectContext?.save()
             
@@ -218,17 +220,16 @@ extension AddNewPatientViewController : UITextFieldDelegate {
         } else if textField == self.tajTextField {
             
             self.patientPOJO.TAJ = textField.text
-            self.schoolyearsTextField.becomeFirstResponder()
             
-        } else if textField == self.schoolyearsTextField {
-            
-            let sy = Int(textField.text!)
-            self.patientPOJO.schoolYears = sy
         }
         
         if self.isSavePatientEnabled() {
             
             self.saveButton.isEnabled = true
+            
+        } else {
+            
+            self.saveButton.isEnabled = false
         }
         
         self.view.endEditing(true)
@@ -261,9 +262,6 @@ extension AddNewPatientViewController {
                 
                 selectedTextField = tajTextField
                 
-            } else if schoolyearsTextField.isEditing {
-                
-                selectedTextField = schoolyearsTextField
             }
             
             let parent = topStackView.subviews.contains(selectedTextField) ? topStackView : bottomStackView
@@ -290,12 +288,6 @@ extension AddNewPatientViewController {
         
         self.patientPOJO.TAJ = tajTextField.text
         
-        if schoolyearsTextField.text != nil && !(schoolyearsTextField.text!.isEmpty) {
-            
-            let sy = Int(schoolyearsTextField.text!)
-            self.patientPOJO.schoolYears = sy
-        }
-        
         if birthdayTextField.text != nil && !(birthdayTextField.text!.isEmpty) {
             
             let birthDay = Date.date(from: birthdayTextField.text!)
@@ -310,6 +302,10 @@ extension AddNewPatientViewController {
         if self.isSavePatientEnabled() {
             
             self.saveButton.isEnabled = true
+            
+        } else {
+            
+            self.saveButton.isEnabled = false
         }
     }
 }

@@ -14,7 +14,7 @@ class ChartLineView: UIView {
     
     private var lineColor: UIColor = UIColor.white { didSet { setNeedsDisplay() } }
     
-    private var separatorLine: UIBezierPath?
+    private var separatorLine = UIBezierPath()
     
     private let maximumXAxisScale = CGFloat(10)
     
@@ -22,9 +22,8 @@ class ChartLineView: UIView {
     
     private var ySubLines = UIBezierPath()
     
-    private var xPositions = [(xPos: CGFloat, resultDate: String)]()
+    private var xPositions = [(xPos: CGFloat, resultDate: Date)]()
     
-    private let dateFormatter = DateFormatter()
     
     private func pathForChartLine() -> UIBezierPath {
         
@@ -40,7 +39,7 @@ class ChartLineView: UIView {
         
         let heightRange = self.frame.height / CGFloat(maximumYValue)
         
-        var widthRange = self.frame.width / CGFloat(resultSet.count + 1)
+        var widthRange = self.frame.width / 8.0 //CGFloat(resultSet.count + 1)
         
         if widthRange < maximumWithRange {
             
@@ -49,41 +48,56 @@ class ChartLineView: UIView {
         
         xPositions.removeAll()
         
-        dateFormatter.dateFormat = "MM-dd"
+        var i = 0
         
-        for i in 0..<resultSet.count {
+        for currentResult in resultSet.reversed() {
             
-            let currentResult = resultSet[i]
+            //let currentResult = resultSet[i]
             
-            currentXPos = widthRange * CGFloat(i + 1)
-            currentYPos = self.bounds.maxY - (heightRange * CGFloat(currentResult.point))
+            currentXPos = self.frame.maxX - (widthRange * CGFloat(i + 1)) - 10
+            currentYPos = self.bounds.maxY - (heightRange * CGFloat(currentResult.point)) - 5
             
-            if i == 0 {
-                
-                if resultSet.count == 1 {
-                    
-                    chartLine.addArc(withCenter: CGPoint(x: currentXPos, y: currentYPos), radius: CGFloat(2), startAngle: CGFloat(0), endAngle: CGFloat.pi * 2, clockwise: true)
-                    
-                } else {
-                    
-                    chartLine.move(to: CGPoint(x: currentXPos, y: currentYPos))
-                }
-                
-            } else {
-                
-                chartLine.addLine(to: CGPoint(x: currentXPos, y: currentYPos))
-            }
+            //drawLineChart(chartLine: chartLine, currentXPos: currentXPos, currentYPos: currentYPos, currentIndex: i)
+            drawBarChart(chartLine: chartLine, currentXPos: currentXPos, currentYPos: currentYPos, currentIndex: i)
             
             let currentDate = currentResult.date! as Date
+
+            xPositions.append((currentXPos, currentDate))
             
-            xPositions.append((currentXPos, dateFormatter.string(from: currentDate)))
+            i = i + 1
         }
         
         AddToSuperViewXAxisLabelPositions()
         
-        addYAxisLabels(maximumWithRange)
+        //addYAxisLabels(maximumWithRange)
+        addXAxisSeparatorLine()
         
         return chartLine
+    }
+    
+    private func drawLineChart(chartLine: UIBezierPath, currentXPos: CGFloat, currentYPos: CGFloat, currentIndex i : Int) {
+        
+        if i == 0 {
+            
+            if resultSet.count == 1 {
+                
+                chartLine.addArc(withCenter: CGPoint(x: currentXPos, y: currentYPos), radius: CGFloat(2), startAngle: CGFloat(0), endAngle: CGFloat.pi * 2, clockwise: true)
+                
+            } else {
+                
+                chartLine.move(to: CGPoint(x: currentXPos, y: currentYPos))
+            }
+            
+        } else {
+            
+            chartLine.addLine(to: CGPoint(x: currentXPos, y: currentYPos))
+        }
+    }
+    
+    private func drawBarChart(chartLine: UIBezierPath, currentXPos: CGFloat, currentYPos: CGFloat, currentIndex i : Int) {
+    
+        chartLine.move(to: CGPoint(x: currentXPos, y: self.bounds.maxY - 5))
+        chartLine.addLine(to: CGPoint(x: currentXPos, y: currentYPos))
     }
     
     private func AddToSuperViewXAxisLabelPositions() {
@@ -113,10 +127,10 @@ class ChartLineView: UIView {
                 height: axisLabelHeight)
             )
             
-            label.textAlignment = .left
+            label.textAlignment = .center
             label.text = yAxisLabelTexts[i]
-            label.font = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
-            label.adjustsFontSizeToFitWidth = true
+            //label.font = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
+            label.adjustsFontSizeToFitWidth = false
             label.textColor = UIColor.white
             
             self.addSubview(label)
@@ -132,14 +146,23 @@ class ChartLineView: UIView {
         
         separatorLine = UIBezierPath()
         
-        separatorLine?.move(to: CGPoint(x: maximumWithRange, y: separatorLineYStartPos))
-        separatorLine?.addLine(to: CGPoint(x: maximumWithRange, y: separatorLineYEndPos))
+        separatorLine.move(to: CGPoint(x: maximumWithRange, y: separatorLineYStartPos))
+        separatorLine.addLine(to: CGPoint(x: maximumWithRange, y: separatorLineYEndPos))
     }
     
     private func addYSubLine(from startPoint: CGPoint) {
         
         ySubLines.move(to: startPoint)
         ySubLines.addLine(to: CGPoint(x: self.bounds.maxX - 10, y: startPoint.y))
+    }
+    
+    private func addXAxisSeparatorLine() {
+        
+        separatorLine.move(to: CGPoint(x: 5, y: 0))
+        separatorLine.addLine(to: CGPoint(x: self.bounds.maxX - 10, y: 0))
+        
+        separatorLine.move(to: CGPoint(x: 5, y: self.bounds.maxY))
+        separatorLine.addLine(to: CGPoint(x: self.bounds.maxX - 10, y: self.bounds.maxY))
     }
     
     override func draw(_ rect: CGRect) {
@@ -155,11 +178,11 @@ class ChartLineView: UIView {
         
         chartLine.stroke()
         
-        separatorLine?.stroke()
-        
-        ySubLines.lineWidth = 1
-        
-        ySubLines.stroke()
+        separatorLine.stroke()
+//        
+//        ySubLines.lineWidth = 1
+//        
+//        ySubLines.stroke()
     }
 
 }

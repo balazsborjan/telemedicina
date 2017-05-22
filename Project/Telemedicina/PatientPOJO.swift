@@ -18,14 +18,11 @@ class PatientPOJO {
     
     var TAJ: String!
     
-    var schoolYears: Int!
-    
-    init(name: String!, sexType: SexType!, birthDate: Date!, TAJ: String!, schoolYears: Int!) {
+    init(name: String!, sexType: SexType!, birthDate: Date!, TAJ: String!) {
         self.name = name
         self.sexType = sexType
         self.birthDate = birthDate
         self.TAJ = TAJ
-        self.schoolYears = schoolYears
     }
     
     init() {}
@@ -35,8 +32,7 @@ class PatientPOJO {
         return self.name == patient.name! &&
             (self.birthDate as NSDate?)! == patient.birthDate &&
             Int32(self.sexType.hashValue) == patient.sexType &&
-            self.TAJ == patient.taj &&
-            Int32(self.schoolYears) == patient.schoolYears
+            self.TAJ == patient.taj
     }
 }
 

@@ -40,6 +40,33 @@ extension Date {
         
         return dateFormatter.date(from: from)!
     }
+    
+    func getMonthAndDay() -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd."
+        dateFormatter.timeZone = NSTimeZone(name: "GMT") as TimeZone!
+        
+        return dateFormatter.string(from: self)
+    }
+    
+    func getMonth() -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM"
+        dateFormatter.timeZone = NSTimeZone(name: "GMT") as TimeZone!
+        
+        return dateFormatter.string(from: self)
+    }
+    
+    func getDay() -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd"
+        dateFormatter.timeZone = NSTimeZone(name: "GMT") as TimeZone!
+        
+        return dateFormatter.string(from: self)
+    }
 }
 
 extension NSDate {

@@ -12,15 +12,13 @@ class ResultChartView: UIView {
     
     private var chartLineView: ChartLineView!
     
-    //private var titleLabel: UILabel!
-    
     private var titleHeight: CGFloat!
     
     private var bottomHeight: CGFloat!
     
     private var chartHeight: CGFloat!
     
-    var xPositions = [(xPos: CGFloat, resultDate: String)]() {
+    var xPositions = [(xPos: CGFloat, resultDate: Date)]() {
         
         didSet {
             
@@ -31,21 +29,16 @@ class ResultChartView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        GradientLayerGenerator.SetDefaultGradientColorTo(view: self)
+        
+        self.clipsToBounds = true
+        self.layer.cornerRadius = 10
         
         titleHeight = self.frame.height / 9 * 2
+        chartHeight = self.frame.height / 9 * 5
+        bottomHeight = self.frame.height / 9 * 2
         
-        if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
-            
-            chartHeight = self.frame.height / 9 * 6
-            bottomHeight = self.frame.height / 9
-            
-        } else {
-            
-            chartHeight = self.frame.height / 9 * 5
-            bottomHeight = self.frame.height / 9 * 2
-        }
-        
-        addTitleinformations()
+        addTitleInformations()
         
         chartLineView = ChartLineView(frame: CGRect(
             x: 0,
@@ -56,19 +49,14 @@ class ResultChartView: UIView {
         
         chartLineView.backgroundColor = UIColor.clear
         
-        self.clipsToBounds = true
-        self.layer.cornerRadius = 10
-        
         self.addSubview(chartLineView)
-        
-        GradientLayerGenerator.SetDefaultGradientColorTo(view: self)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func addTitleinformations() {
+    private func addTitleInformations() {
         
         let orientation = UIDevice.current.orientation
         
@@ -91,10 +79,10 @@ class ResultChartView: UIView {
         
         let labelWidth = self.frame.width / 2
         
-        createTitleLabel(withHeight: titleHeight / 2)
-        createSexTypeLabel(toPoint: CGPoint(x: labelWidth, y: 0))
-        createAgeLabel(toPoint: CGPoint(x: labelWidth, y: self.subviews[0].frame.maxY))
-        createAvarageLabel(withTextAlignment: NSTextAlignment.left, toPoint: CGPoint(x: 5, y: self.subviews[0].frame.maxY), withHeight: titleHeight / 2)
+        createTitleLabel(withHeight: titleHeight)
+        //createSexTypeLabel(toPoint: CGPoint(x: labelWidth, y: 5))
+        //createAgeLabel(toPoint: CGPoint(x: labelWidth, y: self.subviews[0].frame.maxY))
+        createAvarageLabel(withTextAlignment: NSTextAlignment.right, toPoint: CGPoint(x: labelWidth, y: 5), withHeight: titleHeight)
     }
     
     private func drawLandscapeMode() {
@@ -107,7 +95,7 @@ class ResultChartView: UIView {
         
         let titleLabel = UILabel(frame: CGRect(
             x: 5,
-            y: 0,
+            y: 5,
             width: self.frame.width / 2 - 10,
             height: height)
         )
@@ -235,19 +223,56 @@ class ResultChartView: UIView {
             labelWidth = maxLabelWidth
         }
         
-        for currentXPos in xPositions {
+        var actualMonth: String?
+        
+        if xPositions.count > 0 {
             
-            let label = UILabel(frame: CGRect(
-                x: currentXPos.xPos - labelWidth / 2,
-                y: chartLineView.frame.maxY + 2,
-                width: labelWidth,
-                height: bottomHeight - 4)
-            )
+            actualMonth = xPositions[0].resultDate.getMonth()
+        }
+        
+        for i in 0..<xPositions.count {
             
+            let label: UILabel!
+            
+            if i == 0 {
+                
+                label = UILabel(frame: CGRect(
+                    x: xPositions[i].xPos - labelWidth,
+                    y: chartLineView.frame.maxY + 2,
+                    width: labelWidth * 1.5,
+                    height: bottomHeight - 4)
+                )
+                
+            } else {
+                
+                label = UILabel(frame: CGRect(
+                    x: xPositions[i].xPos - labelWidth / 2,
+                    y: chartLineView.frame.maxY + 2,
+                    width: labelWidth,
+                    height: bottomHeight - 4)
+                )
+            }
+            
+            let currentMonth = xPositions[i].resultDate.getMonth()
+            
+            if actualMonth == nil {
+                
+                actualMonth = currentMonth
+            }
+            
+            if i == 0 || currentMonth != actualMonth! {
+            
+                label.text = xPositions[i].resultDate.getMonthAndDay()
+                
+            } else {
+                
+                label.text = xPositions[i].resultDate.getDay()
+            }
+            
+            label.textAlignment = .center
             label.adjustsFontSizeToFitWidth = true
-            label.transform = CGAffineTransform(rotationAngle:  -1 * (CGFloat.pi / 4))
             label.textColor = UIColor.white
-            label.text = currentXPos.resultDate
+            
             
             self.addSubview(label)
         }
@@ -269,6 +294,7 @@ class ResultChartView: UIView {
     }
     
     override func draw(_ rect: CGRect) {
+        super.draw(rect)
         
         UIColor.white.set()
         addSeparatorLines().stroke()
