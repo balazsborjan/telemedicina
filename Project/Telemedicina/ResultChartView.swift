@@ -29,31 +29,56 @@ class ResultChartView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        setupView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        setupView()
+    }
+    
+    private func setupView() {
+        
         GradientLayerGenerator.SetDefaultGradientColorTo(view: self)
         
         self.clipsToBounds = true
         self.layer.cornerRadius = 10
         
-        titleHeight = self.frame.height / 9 * 2
-        chartHeight = self.frame.height / 9 * 5
-        bottomHeight = self.frame.height / 9 * 2
+        let scale = UIApplication.shared.statusBarFrame.height * 2
+        
+        titleHeight = scale
+        chartHeight = self.bounds.height - (2 * scale)
+        bottomHeight = scale
+        
+//        print("scale: \(scale)")
+//        print("titleHeight: \(titleHeight)")
+//        print("chartHeight: \(chartHeight)")
+//        print("bottomHeight: \(bottomHeight)")
+//        
+//        print("self.bounds.height: \(self.bounds.height)")
+//        print("self.frame.height: \(self.frame.height)")
+//        print("self.frame.minY: \(self.frame.minY)")
+//        print("self.frame.maxY: \(self.frame.maxY)")
         
         addTitleInformations()
         
         chartLineView = ChartLineView(frame: CGRect(
             x: 0,
             y: titleHeight,
-            width: self.frame.width,
+            width: self.bounds.width,
             height: chartHeight)
         )
+        
+//        print("chartLineView.bounds.height: \(chartLineView.bounds.height)")
+//        print("chartLineView.frame.height: \(chartLineView.frame.height)")
+//        
+//        print("chartLineView.minY: \(chartLineView.frame.minY)")
+//        print("chartLineView.maxY: \(chartLineView.frame.maxY)")
         
         chartLineView.backgroundColor = UIColor.clear
         
         self.addSubview(chartLineView)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     private func addTitleInformations() {
@@ -77,7 +102,7 @@ class ResultChartView: UIView {
     
     private func drawPortraitMode() {
         
-        let labelWidth = self.frame.width / 2
+        let labelWidth = self.bounds.midX
         
         createTitleLabel(withHeight: titleHeight)
         //createSexTypeLabel(toPoint: CGPoint(x: labelWidth, y: 5))
@@ -87,8 +112,10 @@ class ResultChartView: UIView {
     
     private func drawLandscapeMode() {
         
+        let labelWidth = self.frame.midX
+        
         createTitleLabel(withHeight: titleHeight)
-        createAvarageLabel(withTextAlignment: NSTextAlignment.right, toPoint: CGPoint(x: self.frame.width / 2, y: 0), withHeight: titleHeight)
+        createAvarageLabel(withTextAlignment: NSTextAlignment.right, toPoint: CGPoint(x: labelWidth, y: 0), withHeight: titleHeight)
     }
     
     private func createTitleLabel(withHeight height: CGFloat) {
@@ -96,7 +123,7 @@ class ResultChartView: UIView {
         let titleLabel = UILabel(frame: CGRect(
             x: 5,
             y: 5,
-            width: self.frame.width / 2 - 10,
+            width: self.bounds.midX - 10,
             height: height)
         )
         
@@ -116,7 +143,7 @@ class ResultChartView: UIView {
         let avarageLabel = UILabel(frame: CGRect(
             x: point.x,
             y: point.y,
-            width: self.frame.width / 2 - 10,
+            width: self.bounds.midX - 10,
             height: height)
         )
         
@@ -297,7 +324,7 @@ class ResultChartView: UIView {
         super.draw(rect)
         
         UIColor.white.set()
-        addSeparatorLines().stroke()
+        //addSeparatorLines().stroke()
     }
 
     

@@ -14,17 +14,15 @@ class ResultChartViewController: UIViewController {
     
     var tableView: UITableView?
     
+    let newOperationButton = UIButton()
+    
+    let showAllDataButton = UIButton()
+    
     var resultInfoData: Array<(String, String)>? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        addSubviews()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
         let minResult = Array(patient!.results!).map { ($0 as! Result).point }.min()
         
         let maxResult = patient!.results!.map { ($0 as! Result).point }.max()
@@ -32,16 +30,36 @@ class ResultChartViewController: UIViewController {
         let avgResult =  patient!.results!.map { ($0 as! Result).point }.average
         
         resultInfoData = [
-            ("Legalacsonyabb pont", String(describing: minResult!)),
-            ("Legmagasabb pont", String(describing: maxResult!)),
-            ("Átlag", String(avgResult)),
-            (" ", ""),
-            ("Összes adat megtekintése", ""),
-            ("", ""),
-            ("Új vizsgálat indítása", "")
+            ("Legalacsonyabb pont", String(describing: minResult ?? 0)),
+            ("Legmagasabb pont", String(describing: maxResult ?? 0)),
+            ("Átlag", String(avgResult))
         ]
         
+        newOperationButton.setTitle("Új vizsgálat indítása", for: .normal)
+        newOperationButton.setTitleColor(self.view.tintColor, for: .normal)
+        showAllDataButton.setTitle("Összes adat megtekintése", for: .normal)
+        showAllDataButton.setTitleColor(self.view.tintColor, for: .normal)
+        
+        newOperationButton.addTarget(self, action: #selector(newOperationButtonClick(sender:)), for: .touchUpInside)
+        showAllDataButton.addTarget(self, action: #selector(showAllDataButtonClick(sender:)), for: .touchUpInside)
+        
         addSubviews()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        addSubviews()
+    }
+    
+    @objc private func showAllDataButtonClick(sender: UIButton) {
+        
+        self.tabBarController?.selectedIndex = 0
+    }
+    
+    @objc private func newOperationButtonClick(sender: UIButton) {
+        
+        print("new operation")
     }
     
     private func addSubviews() {
@@ -72,6 +90,7 @@ class ResultChartViewController: UIViewController {
     private func addTableView() {
         
         self.view.addSubview(tableView ?? initTableView())
+        
     }
     
     private func initTableView() -> UITableView {
@@ -94,7 +113,21 @@ class ResultChartViewController: UIViewController {
         tableView?.delegate = self
         tableView?.dataSource = self
         
+        setInfoTableViewHeaderSeparator()
+        
         return tableView!
+    }
+    
+    private func setInfoTableViewHeaderSeparator() {
+        
+        if tableView != nil {
+            
+            let px = 1 / UIScreen.main.scale
+            let frame =  CGRect(x: 0, y: 0, width: self.tableView!.frame.width, height: px)
+            let line = UIView(frame: frame)
+            self.tableView!.tableHeaderView = line
+            line.backgroundColor = self.tableView!.separatorColor
+        }
     }
     
     private func drawChartViewByOrientation() {
@@ -173,37 +206,27 @@ extension ResultChartViewController : UITableViewDelegate, UITableViewDataSource
             
             cell = UITableViewCell(style: .default, reuseIdentifier: "chartInfoTableViewCell")
             
-            if resultInfoData != nil {
-                
-                let button = UIButton(frame: CGRect(
-                    x: 0,
-                    y: 0,
-                    width: cell.contentView.frame.width,
-                    height: cell.contentView.frame.height)
-                )
-                
-                button.setTitle(resultInfoData![indexPath.row].0, for: .normal)
-                button.setTitleColor(self.view.tintColor, for: .normal)
-                button.setTitleColor(UIColor.lightGray, for: .selected)
-                
-                button.tag = indexPath.row
-                
-                button.addTarget(self, action: #selector(buttonClick(sender:)), for: .touchUpInside)
-                
-                cell.contentView.addSubview(button)
-                
-//                cell.textLabel?.text = resultInfoData![indexPath.row].0
-//                cell.textLabel?.textAlignment = .center
-//                cell.textLabel?.textColor = self.view.tintColor
+            switch indexPath.row {
+            case 4:
+                newOperationButton.frame = cell.contentView.frame
+                newOperationButton.bounds = cell.contentView.bounds
+                cell.contentView.addSubview(newOperationButton)
+            case 6:
+                showAllDataButton.frame = cell.contentView.frame
+                cell.contentView.addSubview(showAllDataButton)
+            default:
+                break
             }
         }
         
-        return cell
-    }
-    
-    func buttonClick(sender: UIButton) {
+        if indexPath.row > 1 {
+            
+            cell.preservesSuperviewLayoutMargins = false
+            cell.separatorInset = UIEdgeInsets.zero
+            cell.layoutMargins = UIEdgeInsets.zero
+        }
         
-        print(sender.tag)
+        return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

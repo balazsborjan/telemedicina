@@ -124,9 +124,9 @@ class OperationTableViewController: UITableViewController {
                     
                     for viewController in (self.navigationController?.viewControllers)! {
                         
-                        if viewController is ResultsTabBarController {
+                        if viewController is ResultsViewController {
                         
-                            (viewController as! ResultsTabBarController).backBarButtonChangeNeeded = true
+                            (viewController as! ResultsViewController).backBarButtonChangeNeeded = true
                             
                             self.navigationController?.popToViewController(viewController, animated: true)
                             return
@@ -135,7 +135,7 @@ class OperationTableViewController: UITableViewController {
                     
                     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                     
-                    if let resultVC = storyBoard.instantiateViewController(withIdentifier: "resultVC") as? ResultsTabBarController {
+                    if let resultVC = storyBoard.instantiateViewController(withIdentifier: "resultsViewController") as? ResultsViewController {
                         
                         resultVC.backBarButtonChangeNeeded = true
                         

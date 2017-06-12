@@ -73,6 +73,20 @@ class OperationViewController: UIViewController {
             }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let identifier = segue.identifier {
+            
+            if identifier == "showResultsSegue" {
+                
+                if let destinationVC = segue.destination as? ResultsViewController {
+                    
+                    destinationVC.navigationItem.title = (sender as? UIButton)?.currentTitle ?? ""
+                }
+            }
+        }        
+    }
 }
 
 extension OperationViewController : UITableViewDelegate, UITableViewDataSource {

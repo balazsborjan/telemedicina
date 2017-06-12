@@ -39,7 +39,7 @@ class ChartLineView: UIView {
         
         let heightRange = self.frame.height / CGFloat(maximumYValue)
         
-        var widthRange = self.frame.width / 8.0 //CGFloat(resultSet.count + 1)
+        var widthRange = self.frame.width / 6.0 //CGFloat(resultSet.count + 1)
         
         if widthRange < maximumWithRange {
             
@@ -52,10 +52,8 @@ class ChartLineView: UIView {
         
         for currentResult in resultSet.reversed() {
             
-            //let currentResult = resultSet[i]
-            
-            currentXPos = self.frame.maxX - (widthRange * CGFloat(i + 1)) - 10
-            currentYPos = self.bounds.maxY - (heightRange * CGFloat(currentResult.point)) - 5
+            currentXPos = (self.superview?.frame.maxX)! - (widthRange * CGFloat(i + 1))
+            currentYPos = (self.superview?.frame.maxY)! - (heightRange * CGFloat(currentResult.point)) - 5
             
             //drawLineChart(chartLine: chartLine, currentXPos: currentXPos, currentYPos: currentYPos, currentIndex: i)
             drawBarChart(chartLine: chartLine, currentXPos: currentXPos, currentYPos: currentYPos, currentIndex: i)
@@ -96,7 +94,7 @@ class ChartLineView: UIView {
     
     private func drawBarChart(chartLine: UIBezierPath, currentXPos: CGFloat, currentYPos: CGFloat, currentIndex i : Int) {
     
-        chartLine.move(to: CGPoint(x: currentXPos, y: self.bounds.maxY - 5))
+        chartLine.move(to: CGPoint(x: currentXPos, y: (self.superview?.frame.maxY)! - 5))
         chartLine.addLine(to: CGPoint(x: currentXPos, y: currentYPos))
     }
     
@@ -129,7 +127,6 @@ class ChartLineView: UIView {
             
             label.textAlignment = .center
             label.text = yAxisLabelTexts[i]
-            //label.font = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
             label.adjustsFontSizeToFitWidth = false
             label.textColor = UIColor.white
             
@@ -159,10 +156,10 @@ class ChartLineView: UIView {
     private func addXAxisSeparatorLine() {
         
         separatorLine.move(to: CGPoint(x: 5, y: 0))
-        separatorLine.addLine(to: CGPoint(x: self.bounds.maxX - 10, y: 0))
+        separatorLine.addLine(to: CGPoint(x: (self.superview?.bounds.maxX)! - 5, y: 0))
         
         separatorLine.move(to: CGPoint(x: 5, y: self.bounds.maxY))
-        separatorLine.addLine(to: CGPoint(x: self.bounds.maxX - 10, y: self.bounds.maxY))
+        separatorLine.addLine(to: CGPoint(x: (self.superview?.bounds.maxX)! - 5, y: self.bounds.maxY))
     }
     
     override func draw(_ rect: CGRect) {
@@ -179,10 +176,6 @@ class ChartLineView: UIView {
         chartLine.stroke()
         
         separatorLine.stroke()
-//        
-//        ySubLines.lineWidth = 1
-//        
-//        ySubLines.stroke()
     }
 
 }

@@ -1,28 +1,22 @@
 //
-//  ResultsTableViewController.swift
-//  SiriDemo
+//  ResultAllDataTableViewController.swift
+//  Telemedicina
 //
-//  Created by Balázs Bojrán on 2017. 04. 21..
-//  Copyright © 2017. Balázs Bojrán. All rights reserved.
+//  Created by Balázs Bojrán on 2017. 05. 23..
+//  Copyright © 2017. SZTE. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-class ResultsTableViewController: UITableViewController {
+class ResultAllDataTableViewController: UITableViewController {
 
     var fetchedResultsController: NSFetchedResultsController<Result>?
-    
-    var adjustForTabbarInsets: UIEdgeInsets!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setInsets()
-        
         fetchResults()
-        
-        self.tableView.delegate = self
     }
     
     private func fetchResults() {
@@ -48,31 +42,16 @@ class ResultsTableViewController: UITableViewController {
             try? fetchedResultsController?.performFetch()
         }
     }
-    
-    private func setInsets() {
-        
-        adjustForTabbarInsets = UIEdgeInsetsMake((self.navigationController?.navigationBar.frame.maxY)!, 0, 0, 0);
-        
-        self.tableView.contentInset = adjustForTabbarInsets;
-        self.tableView.scrollIndicatorInsets = adjustForTabbarInsets;
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        setInsets()
-        self.view.setNeedsDisplay()
-    }
 
     // MARK: - Table view data source
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
 
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        
         return fetchedResultsController?.sections?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        
         if fetchedResultsController != nil {
             
             if fetchedResultsController!.fetchedObjects != nil {
@@ -84,20 +63,10 @@ class ResultsTableViewController: UITableViewController {
         return 0
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        if (fetchedResultsController?.fetchedObjects) != nil && (fetchedResultsController?.fetchedObjects!.count)! > 0 {
-            
-            return (fetchedResultsController?.sections?[section].objects?.first as? Result)?.date?.year()
-        }
-        
-        return nil
-    }
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell", for: indexPath)
-
+        
         if let resultCell = cell as? ResultTableViewCell {
             
             let result = fetchedResultsController?.fetchedObjects?[indexPath.row]
@@ -117,8 +86,18 @@ class ResultsTableViewController: UITableViewController {
                 }
             }
         }
-
+        
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        if (fetchedResultsController?.fetchedObjects) != nil && (fetchedResultsController?.fetchedObjects!.count)! > 0 {
+            
+            return (fetchedResultsController?.sections?[section].objects?.first as? Result)?.date?.year()
+        }
+        
+        return nil
     }
     
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
@@ -151,5 +130,4 @@ class ResultsTableViewController: UITableViewController {
         
         self.present(resultInfoAlert, animated: true, completion: nil)
     }
-
 }
